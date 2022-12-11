@@ -31,24 +31,19 @@ export default function musicinstrument() {
             </Head>
             <Layout>
                 <div className="p-4 mt-10">
-
                     <Center>
                         <Box sx={boxMusic}>
                             <Box sx={menu}>
                                 Select music instrument
                             </Box>
-                            <Wrap marginTop={50} marginBottom={100} marginRight={50} marginLeft={50} spacing={150} justify='center'>
+                            <Wrap marginTop={50} marginBottom={100} marginRight={50} marginLeft={50} spacing={200} justify='center'>
                                 <WrapItem>
                                     <MusicMenu src='/image/piano.png' link='/musictherapy/pianotherapy' />
                                 </WrapItem>
                                 <WrapItem>
                                     <MusicMenu src='/image/guitar (1).png' link='/musictherapy/guitartherapy' />
                                 </WrapItem>
-                                <WrapItem>
-                                    <MusicMenu src='/image/drum (1).png' link='/musictherapy/drumtherapy' />
-                                </WrapItem>
                             </Wrap>
-
                         </Box>
                     </Center>
 
