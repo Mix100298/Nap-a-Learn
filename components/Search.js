@@ -7,6 +7,7 @@ let searchbox = {
     maxWidth: '1250px',
 }
 
+// search box for user, article, material
 function Search({ icon, onChange }) {
     return (
         <Box sx={searchbox}>

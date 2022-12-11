@@ -10,6 +10,7 @@ const scrollToTop = () => {
   })
 }
 
+// header on index page
 export default function Example() {
   return (
     <>

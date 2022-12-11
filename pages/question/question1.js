@@ -12,6 +12,7 @@ import url from '../url';
 
 StylesManager.applyTheme("defaultV2");
 
+// data Questionnaire 1 and set label
 const surveyJson = {
   completedHtml: "<img src=\"/image/accept.png\" class=\"imgcenter\" alt=\"Complete\"><div style=\"margin: 32px 0;\"><h3>คุณทำแบบคัดกรองบุคคลที่มีความบกพร่องทางสติปัญญาเสร็จเรียบร้อย</h3></div><div style=\"margin: 32px 0;\"><a  class=\"complete-button\" href=\"/question\">Back to Question Page</a></div><div style=\"margin: 16px 0;\"></div",
   elements: [
@@ -254,6 +255,7 @@ export default () => {
     );
     const answer = Object.values(ordered)
 
+    {/* add answer question 1*/}
     axios.post(`${url}/api/Question/addQuestion1`, {
       answer: answer,
       userID: sessionStorage.getItem('usernumberID')
@@ -290,6 +292,7 @@ export default () => {
                 <Text align="left">2. วิเคราะห์ลักษณะ/พฤติกรรม ซึ่งเป็นลักษณะหรือพฤติกรรมที่แสดงออกบ่อย ๆ โดยให้ทําเครื่องหมาย / ลงในช่อง “ ใช่ ” หรือ “ ไม่ใช่ ” ที่ตรงกับลักษณะหรือพฤติกรรมนั้น ๆ ของตัวเองหรือผู้ถูกประเมิน</Text>
               </Box>
               <Box sx={boxquestion} boxShadow='lg' p='6' rounded='md'>
+                {/* show questionnaire */}
                 <Survey model={survey} />
               </Box>
             </VStack>

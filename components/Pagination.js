@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "@chakra-ui/react";
 import Colour from "../color/napalearncolor";
 
+// pagination button
 function Pagination({ text, disabled, icon, page, icon2 }) {
     return (
         <Button border='2px' borderColor='#FF969B' onClick={page}

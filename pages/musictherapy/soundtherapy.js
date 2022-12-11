@@ -48,7 +48,7 @@ export default function soundtherapy() {
                         <Text sx={textStyle}>
                             Select sound therapy
                         </Text>
-                        <Box sx={line}></Box>
+                        <Box sx={line}></Box> {/* show menu select sound*/}
                         <SoundMenu link='/musictherapy/rain' title='Rain Sound' />
                         <SoundMenu link='/musictherapy/fireplace' title='Fireplace Sound' />
                         <SoundMenu link='/musictherapy/waterfall' title='Waterfall Sound' />

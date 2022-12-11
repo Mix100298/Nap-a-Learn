@@ -3,6 +3,7 @@ import { Button } from "@chakra-ui/react"
 import Colour from "../color/napalearncolor"
 import NextLink from "next/link"
 
+// button with link
 function ButtonNAL ({text, link}) {
     return (
         <NextLink href={link} passHref>

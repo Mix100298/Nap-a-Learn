@@ -5,6 +5,7 @@ import React, { useState } from 'react'
 import Colour from "../color/napalearncolor"
 import url from '../pages/url'
 
+// change your password modal
 export default function PasswordModal({ isOpen, onClose, usernumberID, userrole }) {
 
   let pinkbutton = {
@@ -17,13 +18,10 @@ export default function PasswordModal({ isOpen, onClose, usernumberID, userrole 
 
   const [form, setForm] = useState(
     { currentpassword: "", password: "", confirmpassword: "" })
-
   const [show, setShow] = React.useState(false)
   const handleClick = () => setShow(!show)
-
   const [show1, setShow1] = React.useState(false)
   const handleClick1 = () => setShow1(!show1)
-
   const [wrong, setWrong] = useState(false)
   const [wrongWord, setWrongWord] = useState('')
   const toast = useToast()

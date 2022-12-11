@@ -5,6 +5,7 @@ import React, { useState } from 'react'
 import Colour from "../color/napalearncolor"
 import url from '../pages/url'
 
+// change your profile image modal
 export default function ImageModal({ isOpen, onClose, usernumberID }) {
 
   let pinkbutton = {
@@ -30,7 +31,6 @@ export default function ImageModal({ isOpen, onClose, usernumberID }) {
   const [pre, setPreview] = useState(false)
   const [wrongWord, setWrongWord] = useState('')
   const toast = useToast()
-  const router = useRouter()
 
   const onPreviewClick = () => {
     setPreview(true)

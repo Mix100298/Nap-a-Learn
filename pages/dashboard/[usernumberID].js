@@ -1,25 +1,16 @@
+import { AspectRatio, Box, Center, Flex, Heading, Image, Table, TableContainer, Tbody, Td, Tr, Wrap, WrapItem } from '@chakra-ui/react';
+import axios from 'axios';
 import Head from "next/head";
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import Colour from "../../color/napalearncolor";
+import BoxResultDashboard from '../../components/BoxResultDashboard';
+import ButtonNAL from "../../components/Button.js";
 import Layout from "../../components/Layout";
-import Colour from "../../color/napalearncolor"
-import {
-  Box, Heading, Button, Image, Stack, Input, InputGroup, InputRightElement, InputLeftElement, ColorModeContext,
-  Center, VStack, Flex, Wrap, WrapItem, Text, Table, Tbody, Tr, Td, TableContainer, AspectRatio
-} from '@chakra-ui/react'
-import axios from 'axios'
-import { PieChart } from 'react-minimal-pie-chart';
-import { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
-import NextLink from "next/link"
-import ButtonNAL from "../../components/Button.js"
 import url from "../url";
 
 export default function Home(props) {
-  let line = {
-    width: '100%',
-    marginTop: '50px',
-    height: '2px',
-    bgColor: Colour.Darkblue
-  }
+
   let container = {
     width: '100%',
     marginTop: '24px',
@@ -39,20 +30,6 @@ export default function Home(props) {
     p: '6',
     rounded: 'md'
   }
-  let boxBar = {
-    bgColor: Colour.White,
-    width: '350px',
-    padding: '12px',
-    marginLeft: '20px',
-    marginRight: '20px',
-    marginTop: '32px',
-    marginBottom: '32px',
-  }
-  let boxButton = {
-    bgColor: Colour.White,
-    padding: '12px',
-    marginTop: '18x',
-  }
   let menu = {
     bgColor: Colour.White,
     width: '550px',
@@ -62,13 +39,11 @@ export default function Home(props) {
   let boxImage = {
     width: '150px',
   }
-
   let boxText = {
     whiteSpace: "pre",
     width: "275px",
     overflow: "hidden",
   }
-
   let boxMaterial = {
     bgColor: Colour.White,
     width: '250px',
@@ -78,6 +53,7 @@ export default function Home(props) {
     rounded: 'md',
   }
 
+  // query data from database to display the score
   let iresponse1 = parseInt(props.responseData.iresponse1)
   let iresponse2 = parseInt(props.responseData.iresponse2)
   let iresponse3 = parseInt(props.responseData.iresponse3)
@@ -136,6 +112,7 @@ export default function Home(props) {
     { title: "คะแนนเสีย", value: 18 - apoint, color: "#FF7121" },
   ];
 
+  // fetch data to show you an example 
   const router = useRouter()
   const [article, setarticle] = useState([])
   const [article1, setarticle1] = useState([])
@@ -178,6 +155,7 @@ export default function Home(props) {
     fetchData3()
   }, [])
 
+  //function onClick each article and material
   const onClickArticle = (id) => {
     router.push(`/learning/learningarticleID/${id}`)
   }
@@ -192,7 +170,7 @@ export default function Home(props) {
   }
 
   const [userRole, setuserRole] = useState()
-  const [name,setName] = useState('')
+  const [name, setName] = useState('')
   useEffect(() => {
     setuserRole(sessionStorage.getItem('userrole'))
     setName(sessionStorage.getItem('name'))
@@ -217,124 +195,26 @@ export default function Home(props) {
                   to Nap a Learn Website
                 </Heading>
               </Box>
-              {(userRole) == 2 ? <Box></Box> :
-              <Box sx={boxComponent} align="center" justify="center">
-                <Heading as='h2' size='xl' color={Colour.Darkblue} align='start'>
-                  Questionnaire
-                </Heading>
-                <Box marginTop='36px'>
-                  <Wrap align='center' justify='center'>
-                    <WrapItem>
-                      <Center>
-                        <Box w='600px' align="center" justify="center">
-                          <Heading as='h4' size='md'>
-                            ผลการคัดกรองบุคคลที่มีความบกพร่องทางสติปัญญา
-                          </Heading>
-                          {(icheck) == 1 ?
-                            <Flex align="center" justify="center">
-                              <Box sx={boxBar} boxShadow='md' p='6' rounded='md' align="center" justify="center">
-                                <Box sx={boxButton} >
-                                  <Heading>ยังไม่ได้ทำการทดสอบ</Heading>
-                                </Box>
-                                <Box sx={boxButton} justify="center">
-                                  <NextLink href="/question/question1" passHref>
-                                    <Button width='100%' borderRadius='md' bg={Colour.FirstPink} color='White' size='lg'
-                                      _hover={{
-                                        bg: 'White',
-                                        border: '2px solid',
-                                        color: Colour.FirstPink
-                                      }} >
-                                      Go to Questionnaire
-                                    </Button>
-                                  </NextLink>
-                                </Box>
-                              </Box>
-                            </Flex> :
-                            <Box sx={boxBar} boxShadow='md' p='6' rounded='md'>
-                              <PieChart
-                                animate
-                                animationDuration={40}
-                                animationEasing="ease-in"
-                                center={[50, 50]}
-                                data={data}
-                                lineWidth={30}
-                                lengthAngle={360}
-                                paddingAngle={0}
-                                radius={50}
-                                rounded
-                                startAngle={0}
-                                viewBoxSize={[100, 100]}
-                                labelStyle={{
-                                  fontSize: "6px",
-                                  fontColor: "FFFFFA",
-                                  fontWeight: "800",
-                                }}
-                                label={(data) => data.dataEntry.title + " " + data.dataEntry.value}
-                                labelPosition={50}
-                              />
-                              <Text marginTop="18px" align='center' fontSize='lg'>สรุปผลการประเมินทักษะในปัจจุบัน </Text>
-                              <Text marginTop="6px" align='center' fontSize='lg'>วันที่ประเมิน {idatetime}</Text>
-                            </Box>}
-                        </Box>
-                      </Center>
-                    </WrapItem>
-                    <WrapItem>
-                      <Center>
-                        <Box w='600px' align="center" justify="center">
-                          <Heading as='h4' size='md'>
-                            ผลการคัดกรองบุคคลออทิสติก
-                          </Heading>
-                          {(acheck) == 1 ?
-                            <Flex align="center" justify="center">
-                              <Box sx={boxBar} boxShadow='md' p='6' rounded='md' align="center" justify="center">
-                                <Box sx={boxButton} >
-                                  <Heading>ยังไม่ได้ทำการทดสอบ</Heading>
-                                </Box>
-                                <Box sx={boxButton} justify="center">
-                                  <NextLink href="/question/question2" passHref>
-                                    <Button width='100%' borderRadius='md' bg={Colour.FirstPink} color='White' size='lg'
-                                      _hover={{
-                                        bg: 'White',
-                                        border: '2px solid',
-                                        color: Colour.FirstPink
-                                      }} >
-                                      Go to Questionnaire
-                                    </Button>
-                                  </NextLink>
-                                </Box>
-                              </Box>
-                            </Flex> :
-                            <Box sx={boxBar} boxShadow='md' p='6' rounded='md'>
-                              <PieChart
-                                animate
-                                animationDuration={40}
-                                animationEasing="ease-in"
-                                center={[50, 50]}
-                                data={data1}
-                                lineWidth={30}
-                                lengthAngle={360}
-                                paddingAngle={0}
-                                radius={50}
-                                rounded
-                                startAngle={0}
-                                viewBoxSize={[100, 100]}
-                                labelStyle={{
-                                  fontSize: "6px",
-                                  fontColor: "FFFFFA",
-                                  fontWeight: "800",
-                                }}
-                                label={(data) => data.dataEntry.title + " " + data.dataEntry.value}
-                                labelPosition={50}
-                              />
-                              <Text marginTop="18px" align='center' fontSize='lg'>สรุปผลการประเมินทักษะในปัจจุบัน </Text >
-                              <Text marginTop="6px" align='center' fontSize='lg'>วันที่ประเมิน {adatetime}</Text>
-                            </Box>}
-                        </Box>
-                      </Center>
-                    </WrapItem>
-                  </Wrap>
-                </Box>
-              </Box>}
+              {(userRole) == 2 ? <Box></Box> : // if user is admin not show questionnaire
+                <Box sx={boxComponent} align="center" justify="center">
+                  <Heading as='h2' size='xl' color={Colour.Darkblue} align='start'>
+                    Questionnaire
+                  </Heading>
+                  <Box marginTop='36px'>
+                    <Wrap align='center' justify='center'>
+                      <WrapItem>
+                        <Center> {/*show result of intellect questionnaire*/}
+                          <BoxResultDashboard mode='1' check={icheck} datetime={idatetime} data={data}></BoxResultDashboard>
+                        </Center>
+                      </WrapItem>
+                      <WrapItem>
+                        <Center> {/*show result of autism questionnaire*/}
+                          <BoxResultDashboard mode='2' check={acheck} datetime={adatetime} data={data1}></BoxResultDashboard>
+                        </Center>
+                      </WrapItem>
+                    </Wrap>
+                  </Box>
+                </Box>}
               <Box sx={boxComponent} align="center" justify="center">
                 <Heading as='h2' size='xl' color={Colour.Darkblue} align='start'>
                   Learning Materials
@@ -344,7 +224,7 @@ export default function Home(props) {
                         <Heading size='md' color="#3E3C6E" marginLeft='20px' marginTop='20px'>Article</Heading>
                         <TableContainer marginTop='20px'>
                           <Table variant='striped' colorScheme='gray'>
-                            <Tbody>
+                            <Tbody> {/*show example article learning*/}
                               {
                                 article.map((item, index) => {
                                   return (
@@ -374,22 +254,22 @@ export default function Home(props) {
                     <WrapItem>
                       <Box sx={menu} boxShadow='lg' p='6' rounded='md'>
                         <Heading size='md' color="#3E3C6E" marginLeft='20px' marginTop='20px'>Video</Heading>
-                        <Wrap justify="center">
+                        <Wrap justify="center"> {/*show example article material*/}
                           {
                             material.map((item, index) => {
                               return (
-                                <div key={index}> 
-                                <Center>
-                                  <Box key={index} sx={boxMaterial} _hover={{ color: Colour.FirstPink }}
-                                    onClick={() => onClickMaterial(item.learningmaterialID)}>
+                                <div key={index}>
+                                  <Center>
+                                    <Box key={index} sx={boxMaterial} _hover={{ color: Colour.FirstPink }}
+                                      onClick={() => onClickMaterial(item.learningmaterialID)}>
 
-                                    <AspectRatio maxH='200px' ratio={1} >
-                                      <iframe src={item.url} allowFullScreen></iframe>
-                                    </AspectRatio>
-                                    <Heading size='md'>{item.topic}</Heading>
+                                      <AspectRatio maxH='200px' ratio={1} >
+                                        <iframe src={item.url} allowFullScreen></iframe>
+                                      </AspectRatio>
+                                      <Heading size='md'>{item.topic}</Heading>
 
-                                  </Box>
-                                </Center>
+                                    </Box>
+                                  </Center>
                                 </div>
                               )
                             })}
@@ -408,7 +288,7 @@ export default function Home(props) {
                         <Heading size='md' color="#3E3C6E" marginLeft='20px' marginTop='20px'>Article</Heading>
                         <TableContainer marginTop='20px'>
                           <Table variant='striped' colorScheme='gray'>
-                            <Tbody>
+                            <Tbody> {/*show example article professtion*/}
                               {
                                 article1.map((item, index) => {
                                   return (
@@ -438,22 +318,22 @@ export default function Home(props) {
                     <WrapItem>
                       <Box sx={menu} boxShadow='lg' p='6' rounded='md'>
                         <Heading size='md' color="#3E3C6E" marginLeft='20px' marginTop='20px'>Video</Heading>
-                        <Wrap justify="center">
+                        <Wrap justify="center"> {/*show example professtion professtion*/}
                           {
                             material1.map((item, index) => {
                               return (
-                                <div key={index}> 
-                                <Center>
-                                  <Box key={index} sx={boxMaterial} _hover={{ color: Colour.FirstPink }}
-                                    onClick={() => onClickMaterial1(item.professworkshopID)}>
+                                <div key={index}>
+                                  <Center>
+                                    <Box key={index} sx={boxMaterial} _hover={{ color: Colour.FirstPink }}
+                                      onClick={() => onClickMaterial1(item.professworkshopID)}>
 
-                                    <AspectRatio maxH='200px' ratio={1} >
-                                      <iframe src={item.url} allowFullScreen></iframe>
-                                    </AspectRatio>
-                                    <Heading size='md'>{item.topic}</Heading>
+                                      <AspectRatio maxH='200px' ratio={1} >
+                                        <iframe src={item.url} allowFullScreen></iframe>
+                                      </AspectRatio>
+                                      <Heading size='md'>{item.topic}</Heading>
 
-                                  </Box>
-                                </Center>
+                                    </Box>
+                                  </Center>
                                 </div>
                               )
                             })}
@@ -463,21 +343,21 @@ export default function Home(props) {
                   </Wrap>
                 </Heading>
               </Box>
-              {(userRole) == 2 ? <Box></Box> :
-              <Box sx={boxComponent} align="center" justify="center">
-                <Heading as='h2' size='xl' color={Colour.Darkblue} align='start'>
-                  Music Therapy
-                </Heading>
-                <Box marginTop='36px'>
-                <Image src='/image/listen.jpg'
-                  width='600px'
-                  height='auto'
-                  alt="music" />
-                <Box padding='18px'>
-                <ButtonNAL text="Go To Music Therapy" link="/musictherapy" />
-                </Box>
-                </Box>
-              </Box>}
+              {(userRole) == 2 ? <Box></Box> : // if user is admin not show music therapy
+                <Box sx={boxComponent} align="center" justify="center">
+                  <Heading as='h2' size='xl' color={Colour.Darkblue} align='start'>
+                    Music Therapy
+                  </Heading>
+                  <Box marginTop='36px'>
+                    <Image src='/image/listen.jpg'
+                      width='600px'
+                      height='auto'
+                      alt="music" />
+                    <Box padding='18px'>
+                      <ButtonNAL text="Go To Music Therapy" link="/musictherapy" />
+                    </Box>
+                  </Box>
+                </Box>}
             </Box>
           </Flex>
         </div>

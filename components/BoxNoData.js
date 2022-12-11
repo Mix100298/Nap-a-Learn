@@ -23,7 +23,8 @@ let boxResult = {
     marginTop: '24px',
     marginBottom: '24px',
   }
-
+  
+// the box shows the case that the questionnaire is not performed
 function BoxNoData() {
     return (
         <Flex align="center" justify="center">

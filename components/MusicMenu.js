@@ -3,6 +3,7 @@ import { Image } from "@chakra-ui/react"
 import Colour from "../color/napalearncolor"
 import NextLink from "next/link"
 
+// music menu and link pages
 function MusicMenu({src, link}) {
     return(
         <NextLink href={link} passHref>

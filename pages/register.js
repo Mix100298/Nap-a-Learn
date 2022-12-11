@@ -39,7 +39,6 @@ export default function Home() {
 
   const [show, setShow] = React.useState(false)
   const handleClick = () => setShow(!show)
-
   const [show1, setShow1] = React.useState(false)
   const handleClick1 = () => setShow1(!show1)
 
@@ -49,11 +48,12 @@ export default function Home() {
       dob: "", telephone: ""
     })
   const [wrong, setWrong] = useState(false)
-  const checkCID = ''
+  let checkCID = ''
   const [wrongWord, setWrongWord] = useState('')
   const toast = useToast()
   const router = useRouter()
 
+  // checkCitizenID 
   const checkCitizen = () => {
     let regExp = /^[0-9]+$/g
     let result = regExp.test(form.id)
@@ -66,40 +66,40 @@ export default function Home() {
         parseInt(cid[6]) * 7 + parseInt(cid[7]) * 6 + parseInt(cid[8]) * 5 +
         parseInt(cid[9]) * 4 + parseInt(cid[10]) * 3 + parseInt(cid[11]) * 2
       let checkDigit = check % 11
-      if (11 - checkDigit === parseInt(cid[12])) // Correct 13
+      if (11 - checkDigit === parseInt(cid[12])) // correct 13
       {
         checkCID = 'false'
         console.log('correct')
       }
-      else // Incorrect 13
+      else // incorrect 13 number
       {
         checkCID = 'true'
       }
     }
-    else // Incorrect + Wrong format
+    else // incorrect + wrong format
     {
       checkCID = 'true'
     }
   }
 
   const onSummitClick = async () => {
-    console.log('summit clicked!')
+    console.log('summit clicked!') /* check complete all field */
     if (form.firstname && form.lastname && form.id && form.username &&
       form.password && form.confirmpassword && form.dob && form.telephone) {
       checkCitizen(form.id)
-      if (checkCID == 'true') {
+      if (checkCID == 'true') { /* check in correct ID */
         setWrong(true)
         setWrongWord('ID number is incorrect')
       }
-      else if (form.password != form.confirmpassword) {
+      else if (form.password != form.confirmpassword) { /* check same password */
         setWrong(true)
         setWrongWord('Please enter the same password')
       }
       else {
-        let result = await axios.post(`${url}/api/Register/checkUser`, {
+        let result = await axios.post(`${url}/api/Register/checkUser`, { /* check user duplicate */
           username: form.username
         })
-        let result1 = await axios.post(`${url}/api/Register/checkID`, {
+        let result1 = await axios.post(`${url}/api/Register/checkID`, {  /* check id duplicate */
           id: form.id
         })
         if (result1.data.id != null) {
@@ -112,7 +112,7 @@ export default function Home() {
             setWrongWord('Username is already in use')
           }
         }
-        else if (result1.data.id == null && result.data.username == null) {
+        else if (result1.data.id == null && result.data.username == null) { /* register complete */
           setWrong(false)
           axios.post(`${url}/api/Register/addUser`, form,)
             .then(res => {
@@ -140,7 +140,7 @@ export default function Home() {
     }
   }
   console.log(form)
-  const isError = form === ''
+
 
   return (
     <div className="h-auto min-h-screen bg-header">
@@ -171,7 +171,7 @@ export default function Home() {
             <Box sx={boxLogin} align="center" justify="center" >
               <Stack spacing={6}>
                 <Flex gap={6}>
-                  <InputGroup size='md'>
+                  <InputGroup size='md'> {/* from register */}
                     <InputLeftElement pointerEvents='none' children={<FaUser size={20} color="white" />} />
                     <Input placeholder='Firstname' _placeholder={{ opacity: 0.8, color: 'white' }}
                       focusBorderColor={Colour.FirstPink} color="white" colorScheme="white"
@@ -254,7 +254,6 @@ export default function Home() {
               </Stack>
             </Box>
             <Box sx={boxButton}>
-              {/* <NextLink href="/login" passHref> */}
               <Button width='100%' borderRadius='md' bg={Colour.FirstPink} color='White' size='lg'
                 _hover={{
                   bg: 'White',
@@ -264,10 +263,9 @@ export default function Home() {
                 onClick={() => onSummitClick()}>
                 Create account
               </Button>
-              {/* </NextLink> */}
-            </Box>
+            </Box> {/* set wrong word */}
             {
-              (wrong) ?
+              (wrong) ? 
                 <Alert status='error'
                   bg='none'
                   color='red'

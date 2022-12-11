@@ -33,7 +33,7 @@ export default function musicinstrument() {
                 <div className="p-4 mt-10">
                     <Center>
                         <Box sx={boxMusic}>
-                            <Box sx={menu}>
+                            <Box sx={menu}> {/* show select music instrument*/}
                                 Select music instrument
                             </Box>
                             <Wrap marginTop={50} marginBottom={100} marginRight={50} marginLeft={50} spacing={200} justify='center'>
@@ -50,7 +50,7 @@ export default function musicinstrument() {
                     <Center>
                         <Box sx={boxMusic}>
                             <Box sx={menu}>
-                                Select sound therapy
+                                Select sound therapy {/* show select sound therapy*/}
                             </Box>
                             <Wrap marginTop={50} marginBottom={100} marginRight={50} marginLeft={50} spacing={150} justify='center'>
                                 <WrapItem>

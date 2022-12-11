@@ -1,15 +1,15 @@
-import Head from "next/head";
-import Layout from "../../../components/Layout";
-import { Box, Heading, Flex, Wrap, AspectRatio } from '@chakra-ui/react';
-import Colour from "../../../color/napalearncolor";
-import { useRouter } from 'next/router';
+import { AspectRatio, Box, Flex, Heading, Wrap } from '@chakra-ui/react';
 import axios from 'axios';
+import Head from "next/head";
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import Colour from "../../../color/napalearncolor";
+import Layout from "../../../components/Layout";
 import url from '../../url';
+import Loading from '../../../components/SubLoading';
 
 
 export default (props) => {
-
-    const router = useRouter()
 
     let line = {
         bgColor: Colour.Darkblue,
@@ -29,6 +29,26 @@ export default (props) => {
         maxWidth: '1300px',
     }
 
+    const router = useRouter()
+    const lmID = router.query.learningmaterialID
+    console.log(lmID)
+    const [result, setResult] = useState([])
+    const [loading, setLoading] = useState(false);
+
+    // fetch data each material when query is learningmaterialID
+    const fetchData = async () => {
+        let result = await axios.get(`${url}/api/LearningMaterial/${lmID}`, {
+        })
+        setResult(result.data)
+        console.log(result)
+        setLoading(false)
+    }
+
+    useEffect(() => {
+        setLoading(true)
+        if (lmID) { fetchData() }
+    }, [])
+
     return (
         <div className="">
             <Head>
@@ -37,21 +57,22 @@ export default (props) => {
                 <link rel="icon" href="/pro.ico" />
             </Head>
             <Layout>
+                <Loading isLoading={loading} />
                 <div className="p-4 mt-1 mb-6">
                     <Heading size='2xl' color="#3E3C6E">Learning Material</Heading>
                     <Box sx={line}></Box>
-                    <Flex align="center" justify="center">
+                    <Flex align="center" justify="center">  {/* show each material */}
                         <Wrap align='center' justify='center' spacingX='50px' spacingY='12px'>
                             <Box sx={boxVideo}>
                                 <AspectRatio maxW='1300px' maxH='800px' marginTop='36px' ratio={16 / 9} >
-                                    <iframe src={props.data.url} allowFullScreen > </iframe>
+                                    <iframe src={result.url} allowFullScreen > </iframe>
                                 </AspectRatio>
                             </Box>
                             <Box sx={boxHeading}>
-                                <Heading size='2xl' color="#3E3C6E" marginTop='10px'>{props.data.topic}</Heading>
+                                <Heading size='2xl' color="#3E3C6E" marginTop='10px'>{result.topic}</Heading>
                             </Box>
                             <Box sx={boxText}>
-                                <Heading size='md' marginTop='10px'>{props.data.content}</Heading>
+                                <Heading size='md' marginTop='10px'>{result.content}</Heading>
                             </Box>
                         </Wrap>
                     </Flex>
@@ -60,14 +81,3 @@ export default (props) => {
         </div>
     )
 }
-
-export const getServerSideProps = async (context) => {
-    let learningmaterialID = context.params.learningmaterialID
-    const data = await axios.get(`${url}/api/LearningMaterial/${learningmaterialID}`)
-    return {
-        props: {
-            data: data.data,
-        }
-    }
-}
-

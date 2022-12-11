@@ -1,5 +1,7 @@
-import { Alert, AlertIcon, Box, Button, Flex, FormControl, Image, Input, 
-  InputGroup, InputLeftElement, InputRightElement, Stack } from '@chakra-ui/react';
+import {
+  Alert, AlertIcon, Box, Button, Flex, FormControl, Image, Input,
+  InputGroup, InputLeftElement, InputRightElement, Stack
+} from '@chakra-ui/react';
 import axios from 'axios';
 import Head from "next/head";
 import { useRouter } from 'next/router';
@@ -40,27 +42,25 @@ export default function Home() {
   const [show, setShow] = React.useState(false)
   const handleClick = () => setShow(!show)
 
-  const onLogin = async () =>
-  {
+  // fetch data check login and set sessionStorage
+  const onLogin = async () => {
     {
       let result = await axios.post(`${url}/api/NapALearnUser/login`, {
         username: username,
         password: password
       })
-      if(result.data.username != null)
-      {
+      if (result.data.username != null) {
         sessionStorage.setItem('token', result.data.token)
-        sessionStorage.setItem('userrole',result.data.roleID)
-        sessionStorage.setItem('name',result.data.firstname+' '+result.data.lastname)
+        sessionStorage.setItem('userrole', result.data.roleID)
+        sessionStorage.setItem('name', result.data.firstname + ' ' + result.data.lastname)
         sessionStorage.setItem('usernumberID', result.data.usernumberID)
         sessionStorage.setItem('urlimage', result.data.url)
         console.table(result.data)
         router.push(`/dashboard/${result.data.usernumberID}`)
       }
-      else if (result.data.username == null) 
-      {
-          setWrong(true)
-          setWrongWord('Wrong username or password')
+      else if (result.data.username == null) {
+        setWrong(true)
+        setWrongWord('Wrong username or password')
       }
     }
   }
@@ -75,67 +75,67 @@ export default function Home() {
 
       <Box sx={bgColor} >
         <Flex align="center" justify="center">
-        <Box sx={container}>
-        <FormControl>
-          <Image
-            src='/Iconnal.png'
-            alt="Picture"
-            width={500}
-            height={400}
-          />
-          <Box sx={boxLogin} align="center" justify="center" >
-            <Stack spacing={6}>
-              <InputGroup size='md'>
-                <InputLeftElement pointerEvents='none'>
-                <FaUser size={20} color="white" />
-                </InputLeftElement> 
-                <Input placeholder='Username' _placeholder={{ opacity: 0.8, color: 'white' }} 
-                focusBorderColor={Colour.FirstPink} color="white" colorScheme="white"
-                onChange={(e) => {setUsername(e.target.value); setWrong(false)}} />
-              </InputGroup>
-              <InputGroup size='md'>
-                <InputLeftElement pointerEvents='none'>
-                <RiLockPasswordFill size={20} color="white" />
-                </InputLeftElement> 
-                <Input
-                  pr='4.5rem'
-                  type={show ? 'text' : 'password'}
-                  placeholder='Password'
-                  _placeholder={{ opacity: 0.8, color: 'white' }}
-                  focusBorderColor={Colour.FirstPink}
-                  colorScheme="white"
-                  color="white"
-                  onChange={(e) => {setPassword(e.target.value); setWrong(false)}} 
-                />
-                <InputRightElement width='4.5rem'>
-                  <Button h='1.75rem' size='sm' onClick={handleClick}>
-                    {show ? 'Hide' : 'Show'}
-                  </Button>
-                </InputRightElement>
-              </InputGroup>
-            </Stack>
+          <Box sx={container}>
+            <FormControl>
+              <Image
+                src='/Iconnal.png'
+                alt="Picture"
+                width={500}
+                height={400}
+              />
+              <Box sx={boxLogin} align="center" justify="center" >
+                <Stack spacing={6}> {/* from input username and password */}
+                  <InputGroup size='md'>
+                    <InputLeftElement pointerEvents='none'>
+                      <FaUser size={20} color="white" />
+                    </InputLeftElement>
+                    <Input placeholder='Username' _placeholder={{ opacity: 0.8, color: 'white' }}
+                      focusBorderColor={Colour.FirstPink} color="white" colorScheme="white"
+                      onChange={(e) => { setUsername(e.target.value); setWrong(false) }} />
+                  </InputGroup>
+                  <InputGroup size='md'>
+                    <InputLeftElement pointerEvents='none'>
+                      <RiLockPasswordFill size={20} color="white" />
+                    </InputLeftElement>
+                    <Input
+                      pr='4.5rem'
+                      type={show ? 'text' : 'password'}
+                      placeholder='Password'
+                      _placeholder={{ opacity: 0.8, color: 'white' }}
+                      focusBorderColor={Colour.FirstPink}
+                      colorScheme="white"
+                      color="white"
+                      onChange={(e) => { setPassword(e.target.value); setWrong(false) }}
+                    />
+                    <InputRightElement width='4.5rem'>
+                      <Button h='1.75rem' size='sm' onClick={handleClick}>
+                        {show ? 'Hide' : 'Show'}
+                      </Button>
+                    </InputRightElement>
+                  </InputGroup>
+                </Stack>
+              </Box>
+              <Box sx={boxButton}>
+                <Button width='100%' borderRadius='md' bg={Colour.FirstPink} color='White' size='lg'
+                  _hover={{ bg: 'White', border: '2px solid', color: Colour.FirstPink }}
+                  type='submit'
+                  onClick={() => { onLogin() }}>
+                  LOGIN
+                </Button> {/* show wrong word */}
+                {(wrong) ?
+                  <Alert status='error'
+                    bg='none'
+                    color='red'
+                    position='absolute'
+                    align='center'>
+                    <AlertIcon />
+                    {wrongWord}
+                  </Alert>
+                  : null
+                }
+              </Box>
+            </FormControl>
           </Box>
-          <Box sx={boxButton}>
-            <Button width='100%' borderRadius='md' bg={Colour.FirstPink} color='White' size='lg'
-              _hover={{bg: 'White', border: '2px solid', color: Colour.FirstPink}}
-              type='submit'
-              onClick={() => { onLogin() }}>
-              LOGIN
-            </Button>
-          {(wrong) ? 
-            <Alert status='error'
-                bg='none'
-                color='red'
-                position='absolute'
-                align='center'>
-              <AlertIcon/>
-              {wrongWord}
-            </Alert>
-          : null
-        }
-        </Box>
-        </FormControl>
-        </Box>
         </Flex>
       </Box>
     </div>

@@ -9,6 +9,7 @@ import { MdOutlineTopic } from "react-icons/md";
 import Colour from "../color/napalearncolor";
 import url from '../pages/url';
 
+// add learning article and material modal
 export default function ProfesstionModal({ isOpen, onClose, mode }) {
   const [form, setForm] = useState(
     { topic: "", url: "", content: "" })

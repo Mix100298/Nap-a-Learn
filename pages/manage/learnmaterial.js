@@ -59,6 +59,7 @@ export default () => {
     } = useDisclosure()
     const toast = useToast()
 
+     // check user role
     useEffect(() => {
         const kickOut = () => {
             sessionStorage.clear()
@@ -78,6 +79,7 @@ export default () => {
         fetchData()
     }, [search, page])
 
+    // on click delete material
     const onClickDelete = async () => {
         let lmid = (data[selected].learningmaterialID)
         console.log(lmid)
@@ -106,6 +108,7 @@ export default () => {
         }
     }
 
+    // deleteDialog when click delete button
     const deleteDialog = (onClose, isOpen, id = '') => {
         const OnClickDelete = () => {
             onClickDelete()
@@ -139,6 +142,7 @@ export default () => {
         )
     }
 
+    // fetch data all material
     const fetchData = async () => {
         let result = await axios.get(`${url}/api/Manage/getManage/getLearnMa`, {
             headers: {
@@ -174,11 +178,11 @@ export default () => {
                                     }}
                                     onClick={onOpenAddModal}>
                                     Add Material
-                                </Button>
+                                </Button> {/* add material to open LearningModal */}
                                 <LearningModal isOpen={isOpenAddModal} onClose={onCloseAddModal} mode='2' />
                                 <Search icon={<BiSearchAlt />} onChange={(e) => { setSearch(e.target.value); setPage(1) }} />
                             </HStack>
-                            <Box sx={container1}>
+                            <Box sx={container1}> {/* show all article */}
                                 <TableContainer border={'1px solid' + Colour.LightGrey} borderRadius='12px' bgColor={Colour.White}>
                                     <Table variant='simple'>
                                         <Thead>
@@ -216,7 +220,7 @@ export default () => {
                                 </TableContainer>
                             </Box>
 
-                            <Box sx={pagebox}>
+                            <Box sx={pagebox}> {/* pagination */}
                                 <Flex align="center" justify="center" m={6}>
                                     <Box sx={boxPagination}>
                                         <Flex align="center" justify="center" gap="10">

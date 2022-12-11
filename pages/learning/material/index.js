@@ -16,6 +16,7 @@ import Pagination from '../../../components/Pagination';
 import Search from '../../../components/Search';
 import url from "../../url";
 
+// checkbox filter
 function CustomCheckbox(props) {
     const { state, getCheckboxProps, getInputProps, getLabelProps, htmlProps } =
         useCheckbox(props)
@@ -37,7 +38,7 @@ function CustomCheckbox(props) {
             py={1}
             cursor='pointer'
             {...htmlProps}
-        >
+        >   
             <input onClick={() => toast({
                 position: 'bottom-right',
                 render: () => (
@@ -78,6 +79,7 @@ export default (props) => {
     const [filter, setFilter] = useState('')
     const { value, getCheckboxProps } = useCheckboxGroup({ onChange: (value) => { setFilter(value); setPage(1) } })
 
+    // fetch data according to the selected filter
     const fetchData = async () => {
         console.log(filter)
         let skilltostring1 = ''
@@ -159,6 +161,7 @@ export default (props) => {
         }
     }
 
+     // fetch data when filter, search, page change
     useEffect(() => {
         fetchData()
     }, [filter, search, page])
@@ -217,7 +220,7 @@ export default (props) => {
                         <Search icon={<BiSearchAlt />} onChange={(e) => { setSearch(e.target.value); setPage(1) }} />
                         <Box sx={boxTab}>
                             <Tabs variant='soft-rounded' marginLeft='-25px' >
-                                <TabList>
+                                <TabList> {/* Tab Filter */}
                                     <Tab _selected={{
                                         color: 'purple',
                                         bgColor: 'pink'
@@ -232,7 +235,7 @@ export default (props) => {
                                         <Heading size='md'>Filter By Missing Skills</Heading></Tab>
                                 </TabList>
                                 <TabPanels>
-                                    <TabPanel>
+                                    <TabPanel> {/* Tab Filter By Skills */}
                                         <Box sx={boxFilter}>
                                             <Wrap>
                                                 <CustomCheckbox {...getCheckboxProps({ value: 'ทักษะการสื่อสาร' })} />
@@ -251,7 +254,7 @@ export default (props) => {
                                             </Wrap>
                                         </Box>
                                     </TabPanel>
-                                    <TabPanel>
+                                    <TabPanel> {/* Tab Filter By Questionnaire 1, 2 */}
                                         <Wrap>
                                             <ButtonNAL text="Filter By Questionnaire 1" link={`/learning/material/filterq1/${userID}`} />
                                             <ButtonNAL text="Filter By Questionnaire 2" link={`/learning/material/filterq2/${userID}`} />
@@ -259,8 +262,8 @@ export default (props) => {
                                     </TabPanel>
                                 </TabPanels>
                             </Tabs>
-                        </Box>
-                        {
+                        </Box> {/* show Material */}
+                        {   
                             material.map((item, index) => {
                                 return (
                                     <Center>
@@ -278,17 +281,21 @@ export default (props) => {
                                 )
                             })
                         }
-                    </Wrap>
+                    </Wrap> {/* show Pagination */}
                     <Flex align="center" justify="center" m={6}>
                         <Box sx={boxPagination}>
                             <Flex align="center" justify="center" gap="10">
-                                <Pagination text="First Page" disabled={page === 1} icon={<FiChevronsLeft />} page={() => { setPage(1) }} />
-                                <Pagination text="Prev Page" disabled={page === 1} icon={<FiChevronLeft />} page={() => { if (page > 1) setPage(page - 1) }} />
+                                <Pagination text="First Page" disabled={page === 1} icon={<FiChevronsLeft />}
+                                    page={() => { setPage(1) }} />
+                                <Pagination text="Prev Page" disabled={page === 1} icon={<FiChevronLeft />}
+                                    page={() => { if (page > 1) setPage(page - 1) }} />
                                 <center>
                                     <Heading size='md' color="#3E3C6E">Page {page} of {pageAmount}</Heading>
                                 </center>
-                                <Pagination text="Next Page" disabled={page === parseInt(pageAmount)} icon2={<FiChevronRight />} page={() => { if (page < pageAmount) setPage(page + 1) }} />
-                                <Pagination text="Last Page" disabled={page === parseInt(pageAmount)} icon2={<FiChevronsRight />} page={() => { setPage(parseInt(pageAmount)) }} />
+                                <Pagination text="Next Page" disabled={page === parseInt(pageAmount)} icon2={<FiChevronRight />}
+                                    page={() => { if (page < pageAmount) setPage(page + 1) }} />
+                                <Pagination text="Last Page" disabled={page === parseInt(pageAmount)} icon2={<FiChevronsRight />}
+                                    page={() => { setPage(parseInt(pageAmount)) }} />
                             </Flex>
                         </Box>
                     </Flex>

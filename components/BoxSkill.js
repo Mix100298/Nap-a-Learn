@@ -20,7 +20,8 @@ let boxHeadSkill = {
     justifyContent: 'center',
     alignItems: 'center',
   }
-
+  
+// pass or fail status skill box
 function BoxSkill({ text, score, image }) {
     return (
         <Box sx={boxSkill}>

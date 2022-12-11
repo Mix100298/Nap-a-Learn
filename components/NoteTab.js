@@ -1,5 +1,6 @@
 import { Center, Image, Tab, Tabs, TabList, TabPanels, TabPanel } from "@chakra-ui/react"
 
+// show piano note tabs
 function NoteTab() {
 
     let tabStyle = {

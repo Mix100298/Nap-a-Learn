@@ -2,6 +2,7 @@ import React from "react";
 import { Spacer, Center, Heading, Image, Box, Flex, Wrap, WrapItem, Grid, GridItem, Link, Button, border, Divider, Text } from "@chakra-ui/react";
 import Colour from "../color/napalearncolor";
 
+// pomodoro for music page
 class Pomodoro extends React.Component {
   constructor() {
     super();

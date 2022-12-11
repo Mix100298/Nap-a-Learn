@@ -22,7 +22,7 @@ export default function professionalusic() {
                   <Layout>
                         <div className="p-4 mt-1">
                               <Heading color='#3E3C6E' size='2xl'>Professional Skills</Heading>
-                              <Box sx={line}></Box>
+                              <Box sx={line}></Box> {/* select article or material */}
                               <Wrap align='center' justify='center' spacingX='50px' spacingY='12px'>
                                     <BoxLearningProfessional link={`/professional/article`} image='/image/article.jpg' headding='Article' text='Read for capable of stirring up fresh life endlessly' />
                                     <BoxLearningProfessional link={`/professional/workshop`} image='/image/workshop.jpg' headding='Work Shop' text='Find the hobby that you love to be career' />

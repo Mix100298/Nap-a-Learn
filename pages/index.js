@@ -16,7 +16,7 @@ export default function Index() {
         <link rel="icon" href="/pro.ico" />
       </Head>
 
-      <Box sx={Hcomponent.bgColor} >
+      <Box sx={Hcomponent.bgColor} > {/* show text welcome to website*/}
         <Header />
         <Flex align="center" justify="center">
           <Box sx={Hcomponent.container} align="center" justify="center">
@@ -59,7 +59,7 @@ export default function Index() {
           </Box>
         </Flex>
 
-        <Wrap spacing="30px" justify="center">
+        <Wrap spacing="30px" justify="center"> {/* show detail website*/}
           <Flex sx={Hcomponent.boxContent}>
             <Box align="center" justify="center">
               <Box>

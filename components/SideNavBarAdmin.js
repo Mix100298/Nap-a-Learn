@@ -2,7 +2,6 @@ import classNames from "classnames";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { React, useEffect, useState } from 'react';
-
 import { AiOutlineHome, AiOutlineSetting } from "react-icons/ai";
 import { BiArrowFromRight } from "react-icons/bi";
 import { BsFileMusic, BsPeople } from "react-icons/bs";
@@ -11,6 +10,7 @@ import { GoBook } from "react-icons/go";
 import { HiOutlineMenu } from "react-icons/hi";
 import { RiQuestionnaireLine } from "react-icons/ri";
 
+// SideNavBarAdmin for Admin (userrole = 2)
 const SideNavBar = () => {
   const [toggleCollapse, setToggleCollapse] = useState(false);
   const [isCollapsible, setIsCollapsible] = useState(false);

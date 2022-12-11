@@ -37,6 +37,7 @@ let boxComponent = {
     marginTop: '40px',
 }
 
+// web page access options display box
 function BoxSelect({ Header, Link1, Topic1, Link2, Topic2, Icon }) {
     return (
         <Box sx={menu} boxShadow='lg' p='6' rounded='md'>

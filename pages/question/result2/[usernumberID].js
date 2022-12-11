@@ -15,7 +15,7 @@ import { useEffect, useState } from 'react'
 import { Router, useRouter } from 'next/router';
 import Loading from '../../../components/SubLoading';
 
-export default function result2(props) {
+export default () => {
 
   const [loading, setLoading] = useState(false);
 
@@ -62,6 +62,7 @@ export default function result2(props) {
   console.log(userID)
   const [result, setResult] = useState([])
 
+  // fetch data result from question 2 when query is usernumberID
   const fetchData = async () => {
     let result = await axios.get(`${url}/api/Result/getResult2/${userID}`, {
     })
@@ -75,6 +76,7 @@ export default function result2(props) {
     if (userID) { fetchData() }
   }, [])
 
+   // fetch data result each question to evaluate the skill list
   let response1 = parseInt(result.response1)
   let response2 = parseInt(result.response2)
   let response3 = parseInt(result.response3)
@@ -203,7 +205,7 @@ export default function result2(props) {
       <Loading isLoading={loading} />
         <div className="p-4 mt-1">
           <Heading size='xl'>ผลการคัดกรองบุคคลออทิสติก</Heading>
-          <Box sx={line}></Box>
+          <Box sx={line}></Box> {/* check result if the test is not performed */}
           {(check) == 1 ?
             <Flex align="center" justify="center">
               <Box sx={boxResult} boxShadow='md' p='6' rounded='md' align="center" justify="center">
@@ -240,13 +242,13 @@ export default function result2(props) {
                 </TabList>
               </Box>
               <TabPanels>
-                <TabPanel>
+                <TabPanel> {/* tab current result */}
                   <VStack spacing={8} align="center">
                     <BoxSummary point={point} pointbefore={ause} passvalue={passvalue} />
                     <BoxAllSkillA skill1={skill1} skill2={skill2} skill3={skill3} data={data} />
                   </VStack>
                 </TabPanel>
-                <TabPanel>
+                <TabPanel> {/* tab two last result */}
                   <Flex justifyContent='center'>
                     <Box sx={boxData} align="center" >
                       <Accordion allowToggle>
@@ -263,7 +265,7 @@ export default function result2(props) {
                             </Box>
                           </h2>
                           <AccordionPanel pb={4}>
-                            {/* oldData #1 */}
+                           {/* result olddata 1 */}
                             {(acheck) == 1 ?
                               <BoxNoData /> :
                               <VStack spacing={8} align="center">
@@ -285,7 +287,7 @@ export default function result2(props) {
                             </Box>
                           </h2>
                           <AccordionPanel>
-                            {/* oldData #2 */}
+                            {/* result olddata 2 */}
                             {(bcheck) == 1 ?
                               <BoxNoData /> :
                               <VStack spacing={8} align="center">
@@ -304,15 +306,5 @@ export default function result2(props) {
       </Layout>
     </div>
   );
-}
-
-export const getServerSideProps = async (context) => {
-  const userID = context.params.usernumberID;
-  const responseData = await axios.get(`${url}/api/Result/getResult2/${userID}`)
-  return {
-    props: {
-      responseData: responseData.data,
-    }
-  }
 }
 

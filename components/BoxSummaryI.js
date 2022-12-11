@@ -1,9 +1,8 @@
+import { Box, HStack, Stat, StatGroup, StatHelpText, StatLabel, StatNumber, Wrap, WrapItem } from '@chakra-ui/react';
 import React from "react";
-import { Box, HStack, Wrap, WrapItem} from '@chakra-ui/react'
-import { Stat, StatLabel, StatNumber, StatHelpText, StatGroup} from '@chakra-ui/react'
-import Colour from "../color/napalearncolor"
 import { GrScorecard, GrStatusCriticalSmall } from "react-icons/gr";
 import { MdAutoGraph } from "react-icons/md";
+import Colour from "../color/napalearncolor";
 
 let boxResult = {
     bgColor: Colour.White,
@@ -30,7 +29,8 @@ let boxText = {
     justifyContent: 'center',
     alignItems: 'center',
   }
-
+  
+// autism disability questionnaire score summary box
 function BoxSummary({ point, pointbefore, passvalue }) {
     return (
         <Box sx={boxResult} boxShadow='md' p='6' rounded='md'>

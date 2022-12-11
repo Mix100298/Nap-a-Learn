@@ -13,6 +13,8 @@ import { FiChevronLeft, FiChevronRight, FiChevronsLeft, FiChevronsRight } from "
 import Colour from "../../color/napalearncolor";
 import Layout from "../../components/Layout";
 import url from '../url';
+import Pagination from '../../components/Pagination'
+import Search from '../../components/Search'
 
 export default () => {
     let line = {
@@ -58,6 +60,7 @@ export default () => {
     const [selected, setSelected] = useState(false)
     const toast = useToast()
 
+    // check if user is admin
     useEffect(() => {
         const kickOut = () => {
             sessionStorage.clear()
@@ -78,6 +81,7 @@ export default () => {
         fetchData()
     }, [search, page])
 
+    // fetch data all user
     const fetchData = async () => {
         let result = await axios.get(`${url}/api/NapALearnUser/getUser`, {
             headers: {
@@ -91,6 +95,7 @@ export default () => {
         }
     }
 
+    // onClick delete user
     const onClickDelete = async () => {
         let userid = (data[selected].usernumberID)
         console.log(userid)
@@ -119,6 +124,7 @@ export default () => {
         }
     }
 
+    // deleteDialog when click delete button
     const deleteDialog = (onClose, isOpen) => {
         const OnClickDelete = () => {
             onClickDelete()
@@ -173,23 +179,9 @@ export default () => {
                                 <Text fontSize="24px" fontWeight="bold" marginBottom="8px">
                                     User
                                 </Text>
-                                <Box sx={searchbox}>
-                                    <HStack variant='solid' justify='end'>
-                                        <InputGroup maxWidth='250px' >
-                                            <InputRightElement
-                                                pointerEvents='none'
-                                                children={<BiSearchAlt />}
-                                            />
-                                            <Input
-                                                type='text'
-                                                placeholder='Search Name'
-                                                bgColor={Colour.White}
-                                                onChange={(e) => { setSearch(e.target.value); setPage(1) }}></Input>
-                                        </InputGroup>
-                                    </HStack>
-                                </Box>
+                                <Search icon={<BiSearchAlt />} onChange={(e) => { setSearch(e.target.value); setPage(1) }} />
                             </HStack>
-                            <Box sx={container1}>
+                            <Box sx={container1}> {/* show all user */}
                                 <TableContainer border={'1px solid' + Colour.LightGrey} borderRadius='12px' bgColor={Colour.White}>
                                     <Table variant='simple'>
                                         <Thead>
@@ -246,37 +238,21 @@ export default () => {
                                     </Table>
                                 </TableContainer>
                             </Box>
-                            <Box sx={pagebox}>
+                            <Box sx={pagebox}> {/* pagination */}
                                 <Flex align="center" justify="center" m={6}>
                                     <Box sx={boxPagination}>
                                         <Flex align="center" justify="center" gap="10">
-                                            <Button border='2px' borderColor={Colour.FirstPink}
-                                                bg={Colour.FirstPink} color="white" isDisabled={page === 1}
-                                                _hover={{ bg: 'White', border: '2px solid', color: Colour.FirstPink }}
-                                                onClick={() => { setPage(1) }}> <FiChevronsLeft />
-                                                First Page
-                                            </Button>
-                                            <Button border='2px' borderColor={Colour.FirstPink}
-                                                bg={Colour.FirstPink} color="white" isDisabled={page === 1}
-                                                _hover={{ bg: 'White', border: '2px solid', color: Colour.FirstPink }}
-                                                onClick={() => { if (page > 1) setPage(page - 1) }}> <FiChevronLeft />
-                                                Prev Page
-                                            </Button>
-                                            <Center>
-                                                <Heading size='md' color="#3E3C6E"> Page {page} of {pageAmount} </Heading>
-                                            </Center>
-                                            <Button border='2px' borderColor={Colour.FirstPink}
-                                                bg={Colour.FirstPink} color="white" isDisabled={page === parseInt(pageAmount)}
-                                                _hover={{ bg: 'White', border: '2px solid', color: Colour.FirstPink }}
-                                                onClick={() => { if (page < pageAmount) setPage(page + 1) }}>
-                                                Next Page <FiChevronRight />
-                                            </Button>
-                                            <Button border='2px' borderColor={Colour.FirstPink}
-                                                bg={Colour.FirstPink} color="white" isDisabled={page === parseInt(pageAmount)}
-                                                _hover={{ bg: 'White', border: '2px solid', color: Colour.FirstPink }}
-                                                onClick={() => { setPage(parseInt(pageAmount)) }}>
-                                                Last Page <FiChevronsRight />
-                                            </Button>
+                                        <Pagination text="First Page" disabled={page === 1}
+                                                icon={<FiChevronsLeft />} page={() => { setPage(1) }} />
+                                            <Pagination text="Prev Page" disabled={page === 1}
+                                                icon={<FiChevronLeft />} page={() => { if (page > 1) setPage(page - 1) }} />
+                                            <center>
+                                                <Heading size='md' color="#3E3C6E">Page {page} of {pageAmount}</Heading>
+                                            </center>
+                                            <Pagination text="Next Page" disabled={page === parseInt(pageAmount)}
+                                                icon2={<FiChevronRight />} page={() => { if (page < pageAmount) setPage(page + 1) }} />
+                                            <Pagination text="Last Page" disabled={page === parseInt(pageAmount)}
+                                                icon2={<FiChevronsRight />} page={() => { setPage(parseInt(pageAmount)) }} />
                                         </Flex>
                                     </Box>
                                 </Flex>

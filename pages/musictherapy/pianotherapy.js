@@ -27,7 +27,7 @@ export default function PianoTherapy() {
         <div className="p-4 mt-1">
           <Heading size='2xl'>Piano Therapy</Heading>
           <Box sx={line} alignItems='center'></Box>
-          <Center>
+          <Center> {/* show piano instrument*/}
             <Flex gap={32}>
               <NoteTab />
               <Box marginTop={50}>

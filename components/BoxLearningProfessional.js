@@ -17,6 +17,7 @@ let boxText = {
     marginTop: '8px',
 }
 
+// learning and professional topic box
 function BoxLearningProfessional({ link, image, headding, text }) {
     return (
         <NextLink href={link} passHref >

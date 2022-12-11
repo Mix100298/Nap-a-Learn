@@ -19,6 +19,7 @@ export default () => {
     const [pageAmount, setPageAmount] = useState(1)
     const [search, setSearch] = useState('')
 
+    // fetch data materials and search
     const fetchData = async () => {
         console.log()
 
@@ -77,7 +78,7 @@ export default () => {
             <Layout>
                 <div className="p-4 mt-1">
                     <Heading size='2xl' color='#3E3C6E'>Workshop</Heading>
-                    <Box sx={line}></Box>
+                    <Box sx={line}></Box> {/* show Material */}
                     <Wrap align='center' justify='center' spacingX='50px' spacingY='12px'>
                         <Search icon={<BiSearchAlt />} onChange={(e) => { setSearch(e.target.value); setPage(1) }} />
                         {
@@ -97,17 +98,21 @@ export default () => {
                                 )
                             })
                         }
-                    </Wrap>
+                    </Wrap> {/* show Pagination */}
                     <Flex align="center" justify="center" m={6}>
                         <Box sx={boxPagination}>
                             <Flex align="center" justify="center" gap="10">
-                            <Pagination text="First Page" disabled={page === 1} icon={<FiChevronsLeft />} page={() => { setPage(1) }} />
-                                <Pagination text="Prev Page" disabled={page === 1} icon={<FiChevronLeft />} page={() => { if (page > 1) setPage(page - 1) }} />
+                                <Pagination text="First Page" disabled={page === 1} icon={<FiChevronsLeft />}
+                                    page={() => { setPage(1) }} />
+                                <Pagination text="Prev Page" disabled={page === 1} icon={<FiChevronLeft />}
+                                    page={() => { if (page > 1) setPage(page - 1) }} />
                                 <center>
                                     <Heading size='md' color="#3E3C6E">Page {page} of {pageAmount}</Heading>
                                 </center>
-                                <Pagination text="Next Page" disabled={page === parseInt(pageAmount)} icon2={<FiChevronRight />} page={() => { if (page < pageAmount) setPage(page + 1) }} />
-                                <Pagination text="Last Page" disabled={page === parseInt(pageAmount)} icon2={<FiChevronsRight />} page={() => { setPage(parseInt(pageAmount)) }} />
+                                <Pagination text="Next Page" disabled={page === parseInt(pageAmount)} icon2={<FiChevronRight />}
+                                    page={() => { if (page < pageAmount) setPage(page + 1) }} />
+                                <Pagination text="Last Page" disabled={page === parseInt(pageAmount)} icon2={<FiChevronsRight />}
+                                    page={() => { setPage(parseInt(pageAmount)) }} />
                             </Flex>
                         </Box>
                     </Flex>

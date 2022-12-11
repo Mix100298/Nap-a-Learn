@@ -9,8 +9,8 @@ import Colour from "../color/napalearncolor";
 import axios from 'axios';
 import url from '../pages/url';
 
+// add learning article and material modal
 export default function LearningModal({ isOpen, onClose, mode }) {
-
   const [form, setForm] = useState(
     { topic: "", forskill: "", url: "", content: "" })
   const [wrong, setWrong] = useState(false)

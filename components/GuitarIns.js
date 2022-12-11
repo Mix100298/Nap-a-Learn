@@ -8,8 +8,8 @@ import coco from 'react-guitar-theme-coco'
 import dark from 'react-guitar-theme-dark'
 import Pomodoro from "./Pomodoro";
 
+// guitar instrument function
 function GuitarIns() {
-
     const strings = {
         Cm: [3, 1, 0, 1, 3, -1],
         CM: [0, 1, 0, 2, 3, -1],

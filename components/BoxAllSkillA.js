@@ -18,6 +18,7 @@ let boxFooter = {
     height: '16px',
 }
 
+// skill boxes for each skills of the autism questionnaire.
 function BoxAllSkillA({ skill1, skill2, skill3, data }) {
     return (
         <div>

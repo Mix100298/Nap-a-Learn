@@ -37,6 +37,7 @@ export default (props) => {
     console.log(paID)
     const [result, setResult] = useState([])
 
+    // fetch data each article when query is professtionarticleID
     const fetchData = async () => {
         let result = await axios.get(`${url}/api/ProfesstionArticle/${paID}`, {
         })
@@ -62,7 +63,7 @@ export default (props) => {
                 <div className="p-4 mt-1 mb-6">
                     <Heading size='2xl'>Article</Heading>
                     <Box sx={line}></Box>
-                    <Flex align="center" justify="center">
+                    <Flex align="center" justify="center"> {/* show each article */}
                         <Wrap align='center' justify='center' spacingX='50px' spacingY='12px'>
                             <Flex>
                                 <Box sx={boxImage}>

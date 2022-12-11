@@ -1,5 +1,6 @@
 import { Box, AspectRatio } from "@chakra-ui/react"
 
+// sound player video
 function Sound({src}) {
     return (
         <Box align='center'>

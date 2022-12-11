@@ -4,9 +4,9 @@ import 'react-piano/dist/styles.css';
 import Soundfont from 'soundfont-player';
 import React, { useState, useEffect } from 'react';
 
+// piano function
 function PianoIns() {
 
-    const [count, setCount] = useState(0)
     const firstNote = MidiNumbers.fromNote('c3')
     const lastNote = MidiNumbers.fromNote('f5')
     const keyboardShortcuts = KeyboardShortcuts.create({

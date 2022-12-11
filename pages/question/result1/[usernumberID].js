@@ -62,6 +62,7 @@ export default () => {
   console.log(userID)
   const [result, setResult] = useState([])
 
+  // fetch data result from question 1 when query is usernumberID
   const fetchData = async () => {
     let result = await axios.get(`${url}/api/Result/getResult1/${userID}`, {
     })
@@ -76,6 +77,7 @@ export default () => {
   }, [])
 
 
+  // fetch data result each question to evaluate the skill list
   let response1 = parseInt(result.response1)
   let response2 = parseInt(result.response2)
   let response3 = parseInt(result.response3)
@@ -233,8 +235,8 @@ export default () => {
       <Loading isLoading={loading} />
         <div className="p-4 mt-1">
           <Heading size='xl'>ผลการคัดกรองบุคคลที่มีความบกพร่องทางสติปัญญา</Heading>
-          <Box sx={line}></Box>
-          {(check) == 1 ?
+          <Box sx={line}></Box> {/* check result if the test is not performed */}
+          {(check) == 1 ? 
             <Flex align="center" justify="center">
               <Box sx={boxResult} boxShadow='md' p='6' rounded='md' align="center" justify="center">
                 <Box sx={boxButton}>
@@ -252,20 +254,20 @@ export default () => {
             </Flex> :
             <Tabs variant='soft-rounded' colorScheme="pink">
               <Box sx={boxSelect}>
-                <TabList>
+                <TabList> 
                   <Tab _hover={{ bg: 'White', border: '2px solid', color: Colour.FirstPink }}>ผลการทดสอบปัจจุบัน</Tab>
                   <Tab _hover={{ bg: 'White', border: '2px solid', color: Colour.FirstPink }}>ผลการทดสอบย้อนหลัง 2 ครั้งล่าสุด</Tab>
                 </TabList>
               </Box>
               <TabPanels>
-                <TabPanel>
+                <TabPanel> {/* tab current result */}
                   <VStack spacing={8} align="center">
                     <BoxSummary point={point} pointbefore={ause} passvalue={passvalue} />
                     <BoxAllSkillI skill1={skill1} skill2={skill2} skill3={skill3} skill4={skill4} skill5={skill5}
                       skill6={skill6} skill7={skill7} skill8={skill8} skill9={skill9} skill10={skill10} data={data} />
                   </VStack>
                 </TabPanel>
-                <TabPanel>
+                <TabPanel> {/* tab two last result */}
                   <Flex justifyContent='center'>
                     <Box sx={boxData} align="center" >
                       <Accordion allowToggle>
@@ -282,7 +284,7 @@ export default () => {
                             </Box>
                           </h2>
                           <AccordionPanel pb={4}>
-                            {/* oldData #1 */}
+                            {/* result olddata 1 */}
                             {(acheck) == 1 ?
                               <BoxNoData /> :
                               <VStack spacing={8} align="center">
@@ -305,7 +307,7 @@ export default () => {
                             </Box>
                           </h2>
                           <AccordionPanel>
-                            {/* oldData #2 */}
+                            {/* result olddata 2 */}
                             {(bcheck) == 1 ?
                               <BoxNoData /> :
                               <VStack spacing={8} align="center">

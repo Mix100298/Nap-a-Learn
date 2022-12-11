@@ -120,15 +120,15 @@ export default (props) => {
                         </Box>
                     </GridItem>
                     <GridItem colStart={18}>
-                        <Button marginLeft='60px' marginTop='50px' colorScheme='' size='lg' sx={pinkbutton} onClick={onClickShowChangePassword1} onClose={onClickShowChangePassword1} _hover={{
-                            bg: 'White',
-                            border: '2px solid',
-                            color: Colour.FirstPink
-                        }}> Change Profile Image </Button>
+                        <Button marginLeft='60px' marginTop='50px' colorScheme='' size='lg' sx={pinkbutton}
+                            onClick={onClickShowChangePassword1} onClose={onClickShowChangePassword1} _hover={{
+                                bg: 'White', border: '2px solid', color: Colour.FirstPink
+                            }}> Change Profile Image </Button> {/* click change profile image */}
                         <ImageModal isOpen={ShowChangePassword1} onClose={onClickShowChangePassword1} usernumberID={usernumberID} />
                     </GridItem>
                 </Grid>
 
+                {/* show detail profile */}
                 <Grid templateColumns='repeat(20, 2fr)' marginLeft='30px' marginTop='30px'>
                     <GridItem colStart={4} colEnd={10}>
                         <FormControl isRequired isInvalid={error && !form.username}>
@@ -196,7 +196,7 @@ export default (props) => {
                     </GridItem>
                 </Grid>
 
-                <Center>
+                <Center> {/* when click edit to change submit and cencel */}
                     {!isEdit ?
                         <Button marginTop='40px' colorScheme='' size='lg' sx={pinkbutton} _hover={{
                             bg: 'White', border: '2px solid', color: Colour.FirstPink
@@ -221,7 +221,7 @@ export default (props) => {
                     bg: 'White',
                     border: '2px solid',
                     color: Colour.FirstPink
-                }}> Change Password </Button>
+                }}> Change Password </Button> {/* click change password */}
                 <PasswordModal isOpen={ShowChangePassword} onClose={onClickShowChangePassword} usernumberID={usernumberID} userrole={userrole} />
             </Layout>
         </div>

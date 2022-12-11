@@ -11,6 +11,7 @@ import { GoBook } from "react-icons/go";
 import { HiOutlineMenu } from "react-icons/hi";
 import { RiQuestionnaireLine } from "react-icons/ri";
 
+// AllSideNavBar for Test
 const SideNavBar = () => {
   const [toggleCollapse, setToggleCollapse] = useState(false);
   const [isCollapsible, setIsCollapsible] = useState(false);

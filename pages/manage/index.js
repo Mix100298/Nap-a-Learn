@@ -18,6 +18,8 @@ export default () => {
 
     const router = useRouter()
     const toast = useToast()
+
+    // check user role
     useEffect(() => {
         const kickOut = () => {
             sessionStorage.clear()
@@ -46,7 +48,7 @@ export default () => {
                     <Heading size='2xl'>[Admin] Manage</Heading>
                     <Box sx={line}></Box>
                     <Wrap align='center' justify='center' spacingX='50px' spacingY='12px'>
-                        <WrapItem>
+                        <WrapItem> {/* select menu manage */}
                             <BoxSelect Header='Learning Materials' Link1='/manage/learnarticle' Topic1='Article'
                                 Link2='/manage/learnmaterial' Topic2='Materials' Icon='2' />
                         </WrapItem>

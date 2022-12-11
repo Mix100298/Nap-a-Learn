@@ -1,5 +1,6 @@
 import {Container,Image} from '@chakra-ui/react'
 
+// loading page for wait fetch data
 export default ({isLoading})=>{
     if(isLoading){
         return(

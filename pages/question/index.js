@@ -31,11 +31,11 @@ export default () => {
           <Heading size='2xl'>Questionnaire</Heading>
           <Box sx={line}></Box>
             <Wrap align='center' justify='center' spacingX='50px' spacingY='12px'>
-                <WrapItem>
+                <WrapItem> {/* select questionnaire */}
                     <BoxSelect Header='Questionnaire' Link1='/question/question1' Topic1='แบบคัดกรองบุคคลที่มีความบกพร่องทางสติปัญญา' 
                     Link2='/question/question2' Topic2='แบบคัดกรองบุคคลออทิสติก' Icon='1'/>
                 </WrapItem>
-                <WrapItem>
+                <WrapItem> {/* select result */}
                      <BoxSelect Header='Result' Link1={`/question/result1/${userID}`} Topic1='ผลการคัดกรองบุคคลที่มีความบกพร่องทางสติปัญญา' 
                      Link2={`/question/result2/${userID}`} Topic2='ผลการคัดกรองบุคคลออทิสติก' Icon='2'/>
                 </WrapItem>

@@ -30,7 +30,8 @@ let boxText = {
     justifyContent: 'center',
     alignItems: 'center',
   }
-
+  
+// cognitive disability questionnaire score summary box
 function BoxSummary({ point, pointbefore, passvalue }) {
     return (
         <Box sx={boxResult} boxShadow='md' p='6' rounded='md'>

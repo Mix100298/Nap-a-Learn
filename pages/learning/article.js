@@ -12,7 +12,7 @@ import Pagination from '../../components/Pagination';
 import Search from '../../components/Search';
 import url from '../url';
 
-export default function article() {
+export default () => {
 
     const router = useRouter()
     const [article, setarticle] = useState([])
@@ -20,6 +20,7 @@ export default function article() {
     const [pageAmount, setPageAmount] = useState(1)
     const [search, setSearch] = useState('')
 
+    // fetch data article and search
     const fetchData = async () => {
         let result = await axios.get(`${url}/api/LearningArticle/getLearningArticle`, {
             headers: {
@@ -33,6 +34,7 @@ export default function article() {
         }
     }
 
+    // fetch data when search, page change
     useEffect(() => {
         fetchData()
     }, [search, page])
@@ -73,15 +75,15 @@ export default function article() {
             <Layout>
                 <div className="p-4 mt-1">
                     <Wrap align='center' justify='center' spacingX='50px' spacingY='12px'>
-                        <Box sx={searchbox}>
-                            <Search icon={<BiSearchAlt />} onChange={(e) => { setSearch(e.target.value); setPage(1) }} />
+                        <Box sx={searchbox}> {/* searchbox */}
+                            <Search icon={<BiSearchAlt />} onChange={(e) => { setSearch(e.target.value); setPage(1) }} /> 
                         </Box>
                         <WrapItem>
                             <Box sx={menu} boxShadow='lg' p='6' rounded='md'>
                                 <Heading size='xl' color="#3E3C6E" marginLeft='20px' marginTop='20px'>Learning Article</Heading>
                                 <TableContainer marginTop='20px'>
                                     <Table variant='striped' colorScheme='gray'>
-                                        <Tbody>
+                                        <Tbody> {/* show All Article */}
                                             {
                                                 article.map((item, index) => {
                                                     return (
@@ -108,17 +110,21 @@ export default function article() {
                                 </TableContainer>
                             </Box>
                         </WrapItem>
-                    </Wrap>
+                    </Wrap> {/* show Pagination */}
                     <Flex align="center" justify="center" m={6}>
                         <Box sx={boxPagination}>
                             <Flex align="center" justify="center" gap="10">
-                                <Pagination text="First Page" disabled={page === 1} icon={<FiChevronsLeft />} page={() => { setPage(1) }} />
-                                <Pagination text="Prev Page" disabled={page === 1} icon={<FiChevronLeft />} page={() => { if (page > 1) setPage(page - 1) }} />
+                                <Pagination text="First Page" disabled={page === 1} icon={<FiChevronsLeft />}
+                                    page={() => { setPage(1) }} />
+                                <Pagination text="Prev Page" disabled={page === 1} icon={<FiChevronLeft />}
+                                    page={() => { if (page > 1) setPage(page - 1) }} />
                                 <center>
                                     <Heading size='md' color="#3E3C6E">Page {page} of {pageAmount}</Heading>
                                 </center>
-                                <Pagination text="Next Page" disabled={page === parseInt(pageAmount)} icon2={<FiChevronRight />} page={() => { if (page < pageAmount) setPage(page + 1) }} />
-                                <Pagination text="Last Page" disabled={page === parseInt(pageAmount)} icon2={<FiChevronsRight />} page={() => { setPage(parseInt(pageAmount)) }} />
+                                <Pagination text="Next Page" disabled={page === parseInt(pageAmount)} icon2={<FiChevronRight />}
+                                    page={() => { if (page < pageAmount) setPage(page + 1) }} />
+                                <Pagination text="Last Page" disabled={page === parseInt(pageAmount)} icon2={<FiChevronsRight />}
+                                    page={() => { setPage(parseInt(pageAmount)) }} />
                             </Flex>
                         </Box>
                     </Flex>

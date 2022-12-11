@@ -1,5 +1,6 @@
 import {Container,Image} from '@chakra-ui/react'
 
+// loading page
 export default ()=>{
         return(
             <Container

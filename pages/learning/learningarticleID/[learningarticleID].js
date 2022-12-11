@@ -1,16 +1,14 @@
-import Head from "next/head";
-import Layout from "../../../components/Layout";
-import { Box, Heading, Flex, Wrap } from '@chakra-ui/react';
-import Colour from "../../../color/napalearncolor";
+import { Box, Flex, Heading, Wrap } from '@chakra-ui/react';
 import axios from 'axios';
-import url from '../../url';
-import { useEffect, useState } from 'react'
-import { Router, useRouter } from 'next/router';
+import Head from "next/head";
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import Colour from "../../../color/napalearncolor";
+import Layout from "../../../components/Layout";
 import Loading from '../../../components/SubLoading';
+import url from '../../url';
 
-export default (props) => {
-
-    const [loading, setLoading] = useState(false);
+export default () => {
 
     let line = {
         bgColor: Colour.Darkblue,
@@ -35,7 +33,9 @@ export default (props) => {
     const laID = router.query.learningarticleID
     console.log(laID)
     const [result, setResult] = useState([])
+    const [loading, setLoading] = useState(false);
 
+    // fetch data each article when query is learningarticleID
     const fetchData = async () => {
         let result = await axios.get(`${url}/api/LearningArticle/${laID}`, {
         })
@@ -61,7 +61,7 @@ export default (props) => {
                 <div className="p-4 mt-1 mb-6">
                     <Heading size='2xl'>Article</Heading>
                     <Box sx={line}></Box>
-                    <Flex align="center" justify="center">
+                    <Flex align="center" justify="center"> {/* show each article */}
                         <Wrap align='center' justify='center' spacingX='50px' spacingY='12px'>
                             <Flex>
                                 <Box sx={boxImage}>

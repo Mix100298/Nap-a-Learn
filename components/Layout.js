@@ -1,13 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Header from "./Header";
 import SideNavBar from "./SideNavBar";
 import SideNavBarAdmin from "./SideNavBarAdmin";
 import SideNavBarUser from "./SideNavBarUser";
-import Header from "./Header"
-import { useEffect, useState } from 'react';
 
-
+// show layout website and sidebar
 const Layout = ({ children }) => {
-
   const [userRole, setuserRole] = useState()
   useEffect(() => {
     setuserRole(sessionStorage.getItem('userrole'))
