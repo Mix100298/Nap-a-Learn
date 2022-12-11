@@ -37,7 +37,7 @@ export default (props) => {
                 <link rel="icon" href="/pro.ico" />
             </Head>
             <Layout>
-                <div className="p-4 mt-1">
+                <div className="p-4 mt-1 mb-6">
                     <Heading size='2xl' color="#3E3C6E">Learning Material</Heading>
                     <Box sx={line}></Box>
                     <Flex align="center" justify="center">

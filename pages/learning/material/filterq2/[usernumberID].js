@@ -275,6 +275,7 @@ export default (props) => {
                     <Flex align="center" justify="center" m={6}>
                         <Box sx={boxPagination}>
                             <Flex align="center" justify="center" gap="10">
+                            <Pagination text="First Page" disabled={page === 1} icon={<FiChevronLeft />} page={() => { setPage(1) }} />
                             <Pagination text="Prev Page" disabled={page === 1} icon={<FiChevronLeft />} page={() => { if (page > 1) setPage(page - 1) }} />
                                 <center>
                                     <Heading size='md' color="#3E3C6E">Page {page} of {pageAmount}</Heading>

@@ -4,8 +4,14 @@ import { Box, Heading, Flex, Wrap } from '@chakra-ui/react';
 import Colour from "../../../color/napalearncolor";
 import axios from 'axios';
 import url from '../../url';
+import { useEffect, useState } from 'react'
+import { Router, useRouter } from 'next/router';
+import Loading from '../../../components/SubLoading';
 
 export default (props) => {
+
+    const [loading, setLoading] = useState(false);
+
     let line = {
         bgColor: Colour.Darkblue,
         width: '100%',
@@ -25,6 +31,24 @@ export default (props) => {
         maxWidth: '1300px',
     }
 
+    const router = useRouter()
+    const laID = router.query.learningarticleID
+    console.log(laID)
+    const [result, setResult] = useState([])
+
+    const fetchData = async () => {
+        let result = await axios.get(`${url}/api/LearningArticle/${laID}`, {
+        })
+        setResult(result.data)
+        console.log(result)
+        setLoading(false)
+    }
+
+    useEffect(() => {
+        setLoading(true)
+        if (laID) { fetchData() }
+    }, [])
+
     return (
         <div className="">
             <Head>
@@ -33,21 +57,22 @@ export default (props) => {
                 <link rel="icon" href="/pro.ico" />
             </Head>
             <Layout>
-                <div className="p-4 mt-1">
+                <Loading isLoading={loading} />
+                <div className="p-4 mt-1 mb-6">
                     <Heading size='2xl'>Article</Heading>
                     <Box sx={line}></Box>
                     <Flex align="center" justify="center">
                         <Wrap align='center' justify='center' spacingX='50px' spacingY='12px'>
                             <Flex>
                                 <Box sx={boxImage}>
-                                    <img src={props.data.url} width='1300px' height='400px'  ></img>
+                                    <img src={result.url} width='1300px' height='400px'  ></img>
                                 </Box>
                             </Flex>
                             <Box sx={boxHeading}>
-                                <Heading size='2xl' color="#3E3C6E" marginTop='10px'>{props.data.topic}</Heading>
+                                <Heading size='2xl' color="#3E3C6E" marginTop='10px'>{result.topic}</Heading>
                             </Box>
                             <Box sx={boxText}>
-                                <Heading size='md' marginTop='10px'>{props.data.content}</Heading>
+                                <Heading size='md' marginTop='10px'>{result.content}</Heading>
                             </Box>
                         </Wrap>
                     </Flex>
@@ -55,14 +80,4 @@ export default (props) => {
             </Layout>
         </div>
     )
-}
-
-export const getServerSideProps = async (context) => {
-    let learningarticleID = context.params.learningarticleID
-    const data = await axios.get(`${url}/api/LearningArticle/${learningarticleID}`)
-    return {
-        props: {
-            data: data.data,
-        }
-    }
 }
