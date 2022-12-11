@@ -87,9 +87,19 @@ export default function LearningModal({ isOpen, onClose, mode }) {
                 <Select placeholder='ForSkill' _placeholder={{ opacity: 1, color: 'black' }}
                   focusBorderColor={Colour.FirstPink} color="black" colorScheme="black"
                   value={form.forskill} onChange={(e) => setForm({ ...form, forskill: e.target.value })}>
-                  <option value='option1'>Option 1</option>
-                  <option value='option2'>Option 2</option>
-                  <option value='option3'>Option 3</option>
+                  <option value='ทักษะการสื่อสาร'>ทักษะการสื่อสาร</option>
+                  <option value='ทักษะการดูแลตัวเอง'>ทักษะการดูแลตัวเอง</option>
+                  <option value='ทักษะการดำรงชีวิต'>ทักษะการดำรงชีวิต</option>
+                  <option value='ทักษะทางสังคม'>ทักษะทางสังคม</option>
+                  <option value='ทักษะการรู้จักใช้ทรัพยากร'>ทักษะการรู้จักใช้ทรัพยากร</option>
+                  <option value='ทักษะการควบคุมตัวเอง'>ทักษะการควบคุมตัวเอง</option>
+                  <option value='ทักษะการนำความรู้มาใช้ในชีวิต'>ทักษะการนำความรู้มาใช้ในชีวิต</option>
+                  <option value='ทักษะการทำงาน'>ทักษะการทำงาน</option>
+                  <option value='ทักษะการใช้เวลาว่าง'>ทักษะการใช้เวลาว่าง</option>
+                  <option value='ทักษะการรักษาสุขอนามัย'>ทักษะการรักษาสุขอนามัย</option>
+                  <option value='ทักษะด้านพฤติกรรมและอารมณ์'>ทักษะด้านพฤติกรรมและอารมณ์</option>
+                  <option value='ทักษะด้านการสื่อความหมาย'>ทักษะด้านการสื่อความหมาย</option>
+                  <option value='ทักษะด้านสังคม'>ทักษะด้านสังคม</option>
                 </Select>
               </Flex>
               <InputGroup size='md'>

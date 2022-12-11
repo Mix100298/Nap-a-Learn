@@ -54,62 +54,27 @@ export default function Home(props) {
   }
 
   // query data from database to display the score
-  let iresponse1 = parseInt(props.responseData.iresponse1)
-  let iresponse2 = parseInt(props.responseData.iresponse2)
-  let iresponse3 = parseInt(props.responseData.iresponse3)
-  let iresponse4 = parseInt(props.responseData.iresponse4)
-  let iresponse5 = parseInt(props.responseData.iresponse5)
-  let iresponse6 = parseInt(props.responseData.iresponse6)
-  let iresponse7 = parseInt(props.responseData.iresponse7)
-  let iresponse8 = parseInt(props.responseData.iresponse8)
-  let iresponse9 = parseInt(props.responseData.iresponse9)
-  let iresponse10 = parseInt(props.responseData.iresponse10)
-  let iresponse11 = parseInt(props.responseData.iresponse11)
-  let iresponse12 = parseInt(props.responseData.iresponse12)
-  let iresponse13 = parseInt(props.responseData.iresponse13)
-  let iresponse14 = parseInt(props.responseData.iresponse14)
-  let iresponse15 = parseInt(props.responseData.iresponse15)
-  let iresponse16 = parseInt(props.responseData.iresponse16)
-  let iresponse17 = parseInt(props.responseData.iresponse17)
-  let iresponse18 = parseInt(props.responseData.iresponse18)
-  let iresponse19 = parseInt(props.responseData.iresponse19)
-  let iresponse20 = parseInt(props.responseData.iresponse20)
+  let response = Object.values(props.responseData).map(value => value)
+  let sumscorei = 0
+  let sumscorea = 0
+  for (let i = 0; i <= 19; i++) {
+    sumscorei = sumscorei + parseInt(response[i])
+  }
+  for (let i = 21; i <= 38; i++) {
+    sumscorea = sumscorea + parseInt(response[i])
+  }
+  let icheck = (sumscorei) < 0 ? 1 : 0
+  let acheck = (sumscorea) < 0 ? 1 : 0
   let idatetime = props.responseData.idatetime
-  let ipoint = iresponse1 + iresponse2 + iresponse3 + iresponse4 + iresponse5 + iresponse6 + iresponse7 + iresponse8 + iresponse9 + iresponse10 +
-    iresponse11 + iresponse12 + iresponse13 + iresponse14 + iresponse15 + iresponse16 + iresponse17 + iresponse18 + iresponse19 + iresponse20
-  let icheck = (ipoint) < 0 ? 1 : 0
-
-  let aresponse1 = parseInt(props.responseData.aresponse1)
-  let aresponse2 = parseInt(props.responseData.aresponse2)
-  let aresponse3 = parseInt(props.responseData.aresponse3)
-  let aresponse4 = parseInt(props.responseData.aresponse4)
-  let aresponse5 = parseInt(props.responseData.aresponse5)
-  let aresponse6 = parseInt(props.responseData.aresponse6)
-  let aresponse7 = parseInt(props.responseData.aresponse7)
-  let aresponse8 = parseInt(props.responseData.aresponse8)
-  let aresponse9 = parseInt(props.responseData.aresponse9)
-  let aresponse10 = parseInt(props.responseData.aresponse10)
-  let aresponse11 = parseInt(props.responseData.aresponse11)
-  let aresponse12 = parseInt(props.responseData.aresponse12)
-  let aresponse13 = parseInt(props.responseData.aresponse13)
-  let aresponse14 = parseInt(props.responseData.aresponse14)
-  let aresponse15 = parseInt(props.responseData.aresponse15)
-  let aresponse16 = parseInt(props.responseData.aresponse16)
-  let aresponse17 = parseInt(props.responseData.aresponse17)
-  let aresponse18 = parseInt(props.responseData.aresponse18)
   let adatetime = props.responseData.adatetime
-  let apoint = aresponse1 + aresponse2 + aresponse3 + aresponse4 + aresponse5 + aresponse6 + aresponse7 + aresponse8 + aresponse9 + aresponse10 +
-    aresponse11 + aresponse12 + aresponse13 + aresponse14 + aresponse15 + aresponse16 + aresponse17 + aresponse18
-  let acheck = (apoint) < 0 ? 1 : 0
 
   let data = [
-    { title: "คะแนนดี", value: ipoint, color: "#97CF47" },
-    { title: "คะแนนเสีย", value: 20 - ipoint, color: "#FF7121" },
+    { title: "คะแนนดี", value: sumscorei, color: "#97CF47" },
+    { title: "คะแนนเสีย", value: 20 - sumscorei, color: "#FF7121" },
   ];
-
   let data1 = [
-    { title: "คะแนนที่ดี", value: apoint, color: "#97CF47" },
-    { title: "คะแนนเสีย", value: 18 - apoint, color: "#FF7121" },
+    { title: "คะแนนsดี", value: sumscorea, color: "#97CF47" },
+    { title: "คะแนนเสีย", value: 18 - sumscorea, color: "#FF7121" },
   ];
 
   // fetch data to show you an example 

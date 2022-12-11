@@ -148,49 +148,31 @@ export default (props) => {
     }
 
     // query data from questionnaire
-    let response1 = parseInt(props.responseData.response1)
-    let response2 = parseInt(props.responseData.response2)
-    let response3 = parseInt(props.responseData.response3)
-    let response4 = parseInt(props.responseData.response4)
-    let response5 = parseInt(props.responseData.response5)
-    let response6 = parseInt(props.responseData.response6)
-    let response7 = parseInt(props.responseData.response7)
-    let response8 = parseInt(props.responseData.response8)
-    let response9 = parseInt(props.responseData.response9)
-    let response10 = parseInt(props.responseData.response10)
-    let response11 = parseInt(props.responseData.response11)
-    let response12 = parseInt(props.responseData.response12)
-    let response13 = parseInt(props.responseData.response13)
-    let response14 = parseInt(props.responseData.response14)
-    let response15 = parseInt(props.responseData.response15)
-    let response16 = parseInt(props.responseData.response16)
-    let response17 = parseInt(props.responseData.response17)
-    let response18 = parseInt(props.responseData.response18)
-    let response19 = parseInt(props.responseData.response19)
-    let response20 = parseInt(props.responseData.response20)
-    let point = response1 + response2 + response3 + response4 + response5 + response6 + response7 + response8 + response9 + response10 +
-        response11 + response12 + response13 + response14 + response15 + response16 + response17 + response18 + response19 + response20
+    let response = Object.values(props.responseData).map(value => value)
+    let point = 0
+    let skill = []
+    let pointskills = 0
+
+    for (let i = 0; i <= 19; i++) {
+        point = point + parseInt(response[i])
+      }
+
     let check = (point) < 0 ? 1 : 0
-    let skill1 = (response1 + response2) == 0 ? 0 : 1
-    let skill2 = (response3 + response4) == 0 ? 0 : 1
-    let skill3 = (response5 + response6) == 0 ? 0 : 1
-    let skill4 = (response7 + response8) == 0 ? 0 : 1
-    let skill5 = (response9 + response10) == 0 ? 0 : 1
-    let skill6 = (response11 + response12) == 0 ? 0 : 1
-    let skill7 = (response13 + response14) == 0 ? 0 : 1
-    let skill8 = (response15 + response16) == 0 ? 0 : 1
-    let skill9 = (response17 + response18) == 0 ? 0 : 1
-    let skill10 = (response19 + response20) == 0 ? 0 : 1
-    let textskill1 = (skill1) == 0 ? 'ทักษะการสื่อสาร ' : ''
-    let textskill2 = (skill2) == 0 ? 'ทักษะการดูแลตัวเอง ' : ''
-    let textskill3 = (skill3) == 0 ? 'ทักษะการดำรงชีวิต ' : ''
-    let textskill4 = (skill4) == 0 ? 'ทักษะทางสังคม ' : ''
-    let textskill5 = (skill5) == 0 ? 'ทักษะการรู้จักใช้ทรัพยากร ' : ''
-    let textskill6 = (skill6) == 0 ? 'ทักษะการควบคุมตัวเอง ' : ''
-    let textskill7 = (skill7) == 0 ? 'ทักษะการนำความรู้มาใช้ในชีวิต ' : ''
-    let textskill8 = (skill8) == 0 ? 'ทักษะการทำงาน ' : ''
-    let textskill9 = (skill9) == 0 ? 'ทักษะการใช้เวลาว่าง ' : ''
-    let textskill10 = (skill10) == 0 ? 'ทักษะการรักษาสุขอนามัย ' : ''
+
+    for (let i = 0; i <= 18; i+=2) {
+        skill[i] = (parseInt(response[i]) + parseInt(response[i])) == 0 ? 0 : 1
+        pointskills = pointskills + skill[i]
+      }
+    let textskill1 = (skill[0]) == 0 ? 'ทักษะการสื่อสาร ' : ''
+    let textskill2 = (skill[2]) == 0 ? 'ทักษะการดูแลตัวเอง ' : ''
+    let textskill3 = (skill[4]) == 0 ? 'ทักษะการดำรงชีวิต ' : ''
+    let textskill4 = (skill[6]) == 0 ? 'ทักษะทางสังคม ' : ''
+    let textskill5 = (skill[8]) == 0 ? 'ทักษะการรู้จักใช้ทรัพยากร ' : ''
+    let textskill6 = (skill[10]) == 0 ? 'ทักษะการควบคุมตัวเอง ' : ''
+    let textskill7 = (skill[12]) == 0 ? 'ทักษะการนำความรู้มาใช้ในชีวิต ' : ''
+    let textskill8 = (skill[14]) == 0 ? 'ทักษะการทำงาน ' : ''
+    let textskill9 = (skill[16]) == 0 ? 'ทักษะการใช้เวลาว่าง ' : ''
+    let textskill10 = (skill[18]) == 0 ? 'ทักษะการรักษาสุขอนามัย ' : ''
     
     // show missing skills from questionnaire
     let alltext = textskill1 + textskill2 + textskill3 + textskill4 + textskill5 + textskill6 + textskill7 + textskill8 + textskill9 + textskill10

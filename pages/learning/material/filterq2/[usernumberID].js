@@ -103,7 +103,7 @@ export default (props) => {
         }
     }
 
-     // fetch data when filter, search, page change
+    // fetch data when filter, search, page change
     useEffect(() => {
         fetchData()
     }, [filter, search, page])
@@ -148,30 +148,17 @@ export default (props) => {
     }
 
     // query data from questionnaire
-    let aresponse1 = parseInt(props.responseData.aresponse1)
-    let aresponse2 = parseInt(props.responseData.aresponse2)
-    let aresponse3 = parseInt(props.responseData.aresponse3)
-    let aresponse4 = parseInt(props.responseData.aresponse4)
-    let aresponse5 = parseInt(props.responseData.aresponse5)
-    let aresponse6 = parseInt(props.responseData.aresponse6)
-    let aresponse7 = parseInt(props.responseData.aresponse7)
-    let aresponse8 = parseInt(props.responseData.aresponse8)
-    let aresponse9 = parseInt(props.responseData.aresponse9)
-    let aresponse10 = parseInt(props.responseData.aresponse10)
-    let aresponse11 = parseInt(props.responseData.aresponse11)
-    let aresponse12 = parseInt(props.responseData.aresponse12)
-    let aresponse13 = parseInt(props.responseData.aresponse13)
-    let aresponse14 = parseInt(props.responseData.aresponse14)
-    let aresponse15 = parseInt(props.responseData.aresponse15)
-    let aresponse16 = parseInt(props.responseData.aresponse16)
-    let aresponse17 = parseInt(props.responseData.aresponse17)
-    let aresponse18 = parseInt(props.responseData.aresponse18)
-    let apoint = aresponse1 + aresponse2 + aresponse3 + aresponse4 + aresponse5 + aresponse6 + aresponse7 + aresponse8 + aresponse9 + aresponse10 +
-        aresponse11 + aresponse12 + aresponse13 + aresponse14 + aresponse15 + aresponse16 + aresponse17 + aresponse18
-    let acheck = (apoint) < 0 ? 1 : 0
-    let skill11 = (aresponse1 + aresponse2 + aresponse3 + aresponse4 + aresponse5) <= 3 ? 0 : 1
-    let skill12 = (aresponse6 + aresponse7 + aresponse8 + aresponse9 + aresponse10 + aresponse11 + aresponse12) <= 5 ? 0 : 1
-    let skill13 = (aresponse13 + aresponse14 + aresponse15 + aresponse16 + aresponse17 + aresponse18) <= 4 ? 0 : 1
+    let response = Object.values(props.responseData).map(value => value)
+    let point = 0
+
+    for (let i = 0; i <= 17; i++) {
+        point = point + parseInt(response[i])
+      }
+    
+    let check = (point) < 0 ? 1 : 0
+    let skill11 = (response[0] + response[1] + response[2] + response[3] + response[4]) <= 3 ? 0 : 1
+    let skill12 = (response[5] + response[6] + response[7] + response[8] + response[9] + response[10] + response[11]) <= 5 ? 0 : 1
+    let skill13 = (response[12] + response[13] + response[14] + response[15] + response[16] + response[17]) <= 4 ? 0 : 1
     let textskill11 = (skill11) == 0 ? 'ทักษะด้านพฤติกรรมและอารมณ์ ' : ''
     let textskill12 = (skill12) == 0 ? 'ทักษะด้านการสื่อความหมาย ' : ''
     let textskill13 = (skill13) == 0 ? 'ทักษะด้านสังคม ' : ''
@@ -204,10 +191,10 @@ export default (props) => {
                         <Box sx={boxTab}>
                             <Heading color='#3E3C6E' size='xl' marginBottom='12px'>Filter By Questionnaire 2</Heading>
                             <Box sx={boxFilter}> {/* check the questionnaire, show missing skills and filter by missing skills */}
-                                {(acheck) == 1 ?
+                                {(check) == 1 ?
                                     <Heading size='lg' color="#FF7121"> You have not completed the questionnaire yet </Heading> :
                                     <Heading size='lg' color="#3E3C6E"> Skills you are missing include : {alltext} {alltext5}</Heading>}
-                                {(acheck) || (alltext3) == 1 ?
+                                {(check) || (alltext3) == 1 ?
                                     <Button isDisabled bg="#FE979C" color="#FFFFFF" border='2px solid' borderColor='#FF969B' mr={3} mt={4}
                                         _hover={{ bg: 'White', border: '2px solid', color: Colour.FirstPink }}>
                                         Filter Missing Skills
@@ -228,7 +215,7 @@ export default (props) => {
                                         }}>
                                         Filter Missing Skills
                                     </Button>}
-                                {(acheck) || (alltext3) == 1 ?
+                                {(check) || (alltext3) == 1 ?
                                     <Button isDisabled bg="#FE979C" color="#FFFFFF" border='2px solid' borderColor='#FF969B' mr={3} mt={4}
                                         _hover={{ bg: 'White', border: '2px solid', color: Colour.FirstPink }}>
                                         Delete Filter

@@ -1,7 +1,7 @@
-import { Box, Heading, Text } from '@chakra-ui/react';
-import React from "react";
-import { PieChart } from 'react-minimal-pie-chart';
+import { Box, Flex, Heading, Button, Text } from '@chakra-ui/react';
 import Colour from "../color/napalearncolor";
+import { PieChart } from 'react-minimal-pie-chart';
+import NextLink from 'next/link';
 
 let boxBar = {
   bgColor: Colour.White,

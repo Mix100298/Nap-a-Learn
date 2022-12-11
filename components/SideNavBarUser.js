@@ -96,7 +96,6 @@ const menuItems = [
           {menuItems.map(({ icon: Icon, ...menu }) => {
             const classes = getNavItemClasses(menu);
             return (
-              <div key={menu.id}>
               <div className={classes}>
                 <Link href={menu.link}>
                   <a className="flex py-4 px-3 items-center w-full h-full mr-1">
@@ -114,7 +113,6 @@ const menuItems = [
                     )}
                   </a>
                 </Link>
-              </div>
               </div>
             );
           })}

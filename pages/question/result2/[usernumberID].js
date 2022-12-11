@@ -77,30 +77,29 @@ export default () => {
   }, [])
 
    // fetch data result each question to evaluate the skill list
-  let response1 = parseInt(result.response1)
-  let response2 = parseInt(result.response2)
-  let response3 = parseInt(result.response3)
-  let response4 = parseInt(result.response4)
-  let response5 = parseInt(result.response5)
-  let response6 = parseInt(result.response6)
-  let response7 = parseInt(result.response7)
-  let response8 = parseInt(result.response8)
-  let response9 = parseInt(result.response9)
-  let response10 = parseInt(result.response10)
-  let response11 = parseInt(result.response11)
-  let response12 = parseInt(result.response12)
-  let response13 = parseInt(result.response13)
-  let response14 = parseInt(result.response14)
-  let response15 = parseInt(result.response15)
-  let response16 = parseInt(result.response16)
-  let response17 = parseInt(result.response17)
-  let response18 = parseInt(result.response18)
-  let point = response1 + response2 + response3 + response4 + response5 + response6 + response7 + response8 + response9 + response10 +
-    response11 + response12 + response13 + response14 + response15 + response16 + response17 + response18
+   let response = Object.values(result).map(value => value)
+   let point = 0
+   let apoint = 0
+   let bpoint = 0
+   let cpoint = 0
+ 
+   for (let i = 0; i <= 17; i++) {
+     point = point + parseInt(response[i])
+   }
+   for (let i = 18; i <= 35; i++) {
+     apoint = apoint + parseInt(response[i])
+   }
+   for (let i = 36; i <= 53; i++) {
+     bpoint = bpoint + parseInt(response[i])
+   }
+   for (let i = 54; i <= 71; i++) {
+     cpoint = cpoint + parseInt(response[i])
+   }
+
   let check = (point) < 0 ? 1 : 0
-  let skill1 = (response1 + response2 + response3 + response4 + response5) <= 3 ? 0 : 1
-  let skill2 = (response6 + response7 + response8 + response9 + response10 + response11 + response12) <= 5 ? 0 : 1
-  let skill3 = (response13 + response14 + response15 + response16 + response17 + response18) <= 4 ? 0 : 1
+  let skill1 = (response[0] + response[1] + response[2] + response[3] + response[4]) <= 3 ? 0 : 1
+  let skill2 = (response[5] + response[6] + response[7] + response[8] + response[9] + response[10] + response[11]) <= 5 ? 0 : 1
+  let skill3 = (response[12] + response[13] + response[14] + response[15] + response[16] + response[17]) <= 4 ? 0 : 1
   let pointskills = skill1 + skill2 + skill3
   let passvalue = (pointskills >= 2) ? 1 : 0
   let data = [
@@ -108,31 +107,11 @@ export default () => {
     { title: "ไม่ผ่าน", value: 3 - pointskills, color: "#FF7121" },
   ];
 
-  let aresponse1 = parseInt(result.aresponse1)
-  let aresponse2 = parseInt(result.aresponse2)
-  let aresponse3 = parseInt(result.aresponse3)
-  let aresponse4 = parseInt(result.aresponse4)
-  let aresponse5 = parseInt(result.aresponse5)
-  let aresponse6 = parseInt(result.aresponse6)
-  let aresponse7 = parseInt(result.aresponse7)
-  let aresponse8 = parseInt(result.aresponse8)
-  let aresponse9 = parseInt(result.aresponse9)
-  let aresponse10 = parseInt(result.aresponse10)
-  let aresponse11 = parseInt(result.aresponse11)
-  let aresponse12 = parseInt(result.aresponse12)
-  let aresponse13 = parseInt(result.aresponse13)
-  let aresponse14 = parseInt(result.aresponse14)
-  let aresponse15 = parseInt(result.aresponse15)
-  let aresponse16 = parseInt(result.aresponse16)
-  let aresponse17 = parseInt(result.aresponse17)
-  let aresponse18 = parseInt(result.aresponse18)
-  let apoint = aresponse1 + aresponse2 + aresponse3 + aresponse4 + aresponse5 + aresponse6 + aresponse7 + aresponse8 + aresponse9 + aresponse10 +
-    aresponse11 + aresponse12 + aresponse13 + aresponse14 + aresponse15 + aresponse16 + aresponse17 + aresponse18
   let acheck = (apoint) < 0 ? 1 : 0
   let ause = (apoint) < 0 ? 0 : apoint
-  let askill1 = (aresponse1 + aresponse2 + aresponse3 + aresponse4 + aresponse5) <= 3 ? 0 : 1
-  let askill2 = (aresponse6 + aresponse7 + aresponse8 + aresponse9 + aresponse10 + aresponse11 + aresponse12) <= 5 ? 0 : 1
-  let askill3 = (aresponse13 + aresponse14 + aresponse15 + aresponse16 + aresponse17 + aresponse18) <= 4 ? 0 : 1
+  let askill1 = (response[18] + response[19] + response[20] + response[21] + response[22]) <= 3 ? 0 : 1
+  let askill2 = (response[23] + response[24] + response[25] + response[26] + response[27] + response[28] + response[29]) <= 5 ? 0 : 1
+  let askill3 = (response[30] + response[31] + response[32] + response[33] + response[34] + response[35]) <= 4 ? 0 : 1
   let apointskills = askill1 + askill2 + askill3
   let apassvalue = (apointskills >= 2) ? 1 : 0
   let adata = [
@@ -140,31 +119,11 @@ export default () => {
     { title: "ไม่ผ่าน", value: 3 - apointskills, color: "#FF7121" },
   ];
 
-  let bresponse1 = parseInt(result.bresponse1)
-  let bresponse2 = parseInt(result.bresponse2)
-  let bresponse3 = parseInt(result.bresponse3)
-  let bresponse4 = parseInt(result.bresponse4)
-  let bresponse5 = parseInt(result.bresponse5)
-  let bresponse6 = parseInt(result.bresponse6)
-  let bresponse7 = parseInt(result.bresponse7)
-  let bresponse8 = parseInt(result.bresponse8)
-  let bresponse9 = parseInt(result.bresponse9)
-  let bresponse10 = parseInt(result.bresponse10)
-  let bresponse11 = parseInt(result.bresponse11)
-  let bresponse12 = parseInt(result.bresponse12)
-  let bresponse13 = parseInt(result.bresponse13)
-  let bresponse14 = parseInt(result.bresponse14)
-  let bresponse15 = parseInt(result.bresponse15)
-  let bresponse16 = parseInt(result.bresponse16)
-  let bresponse17 = parseInt(result.bresponse17)
-  let bresponse18 = parseInt(result.bresponse18)
-  let bpoint = bresponse1 + bresponse2 + bresponse3 + bresponse4 + bresponse5 + bresponse6 + bresponse7 + bresponse8 + bresponse9 + bresponse10 +
-    bresponse11 + bresponse12 + bresponse13 + bresponse14 + bresponse15 + bresponse16 + bresponse17 + bresponse18
   let bcheck = (bpoint) < 0 ? 1 : 0
   let buse = (bpoint) < 0 ? 0 : bpoint
-  let bskill1 = (bresponse1 + bresponse2 + bresponse3 + bresponse4 + bresponse5) <= 3 ? 0 : 1
-  let bskill2 = (bresponse6 + bresponse7 + bresponse8 + bresponse9 + bresponse10 + bresponse11 + bresponse12) <= 5 ? 0 : 1
-  let bskill3 = (bresponse13 + bresponse14 + bresponse15 + bresponse16 + bresponse17 + bresponse18) <= 4 ? 0 : 1
+  let bskill1 = (response[36] + response[38] + response[40] + response[42] + response[44]) <= 3 ? 0 : 1
+  let bskill2 = (response[46] + response[48] + response[50] + response[52] + response[54] + response[56] + response[58]) <= 5 ? 0 : 1
+  let bskill3 = (response[60] + response[62] + response[64] + response[66] + response[68] + response[70]) <= 4 ? 0 : 1
   let bpointskills = bskill1 + bskill2 + bskill3
   let bpassvalue = (bpointskills >= 2) ? 1 : 0
   let bdata = [
@@ -172,26 +131,6 @@ export default () => {
     { title: "ไม่ผ่าน", value: 3 - bpointskills, color: "#FF7121" },
   ];
 
-  let cresponse1 = parseInt(result.cresponse1)
-  let cresponse2 = parseInt(result.cresponse2)
-  let cresponse3 = parseInt(result.cresponse3)
-  let cresponse4 = parseInt(result.cresponse4)
-  let cresponse5 = parseInt(result.cresponse5)
-  let cresponse6 = parseInt(result.cresponse6)
-  let cresponse7 = parseInt(result.cresponse7)
-  let cresponse8 = parseInt(result.cresponse8)
-  let cresponse9 = parseInt(result.cresponse9)
-  let cresponse10 = parseInt(result.cresponse10)
-  let cresponse11 = parseInt(result.cresponse11)
-  let cresponse12 = parseInt(result.cresponse12)
-  let cresponse13 = parseInt(result.cresponse13)
-  let cresponse14 = parseInt(result.cresponse14)
-  let cresponse15 = parseInt(result.cresponse15)
-  let cresponse16 = parseInt(result.cresponse16)
-  let cresponse17 = parseInt(result.cresponse17)
-  let cresponse18 = parseInt(result.cresponse18)
-  let cpoint = cresponse1 + cresponse2 + cresponse3 + cresponse4 + cresponse5 + cresponse6 + cresponse7 + cresponse8 + cresponse9 + cresponse10 +
-    cresponse11 + cresponse12 + cresponse13 + cresponse14 + cresponse15 + cresponse16 + cresponse17 + cresponse18
   let cuse = (cpoint) < 0 ? 0 : cpoint
 
   return (

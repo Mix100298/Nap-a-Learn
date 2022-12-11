@@ -14,7 +14,7 @@ function PianoIns() {
         lastNote: lastNote,
         keyboardConfig: KeyboardShortcuts.HOME_ROW,
     })
-    const [instrument, setInstrument] = useState('0')
+    const [instrument, setInstrument] = useState('c3')
     useEffect(() => {
         Soundfont.instrument(new AudioContext(), 'acoustic_grand_piano').then((instrument) => {
             setInstrument(instrument)
