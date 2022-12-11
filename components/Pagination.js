@@ -1,6 +1,6 @@
 import React from "react";
-import { Button } from "@chakra-ui/react"
-import Colour from "../color/napalearncolor"
+import { Button } from "@chakra-ui/react";
+import Colour from "../color/napalearncolor";
 
 function Pagination({ text, disabled, icon, page, icon2 }) {
     return (

@@ -1,10 +1,10 @@
 import Head from "next/head";
 import Layout from "../../../components/Layout";
-import { Box, Heading, Flex, Wrap, AspectRatio } from '@chakra-ui/react'
-import Colour from "../../../color/napalearncolor"
-import { useRouter } from 'next/router'
-import axios from 'axios'
-import url from '../../url'
+import { Box, Heading, Flex, Wrap, AspectRatio } from '@chakra-ui/react';
+import Colour from "../../../color/napalearncolor";
+import { useRouter } from 'next/router';
+import axios from 'axios';
+import url from '../../url';
 
 export default (props) => {
 
@@ -16,16 +16,13 @@ export default (props) => {
         marginTop: '12px',
         height: '2px',
     }
-
     let boxVideo = { 
         width: '100%',
         maxWidth: '1300px',
     }
-
     let boxHeading = {
         width: '1300px',
     }
-
     let boxText = {
         width: '100%',
         maxWidth: '1300px',
@@ -43,8 +40,7 @@ export default (props) => {
                     <Heading size='2xl' color="#3E3C6E">Workshop</Heading>
                     <Box sx={line}></Box>
                     <Flex align="center" justify="center">
-                        <Wrap align='center' justify='center' spacingX='50px' spacingY='12px'>
-                            
+                        <Wrap align='center' justify='center' spacingX='50px' spacingY='12px'>                           
                                 <Box sx={boxVideo}>
                                     <AspectRatio   maxW='1300px' maxH='800px' marginTop= '36px' ratio={16/9} >
                                         <iframe src={props.data.url} allowFullScreen > </iframe>                                
@@ -60,7 +56,6 @@ export default (props) => {
                     </Flex>
                 </div>
             </Layout>
-
         </div>
     )
 }

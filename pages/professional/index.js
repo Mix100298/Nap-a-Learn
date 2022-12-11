@@ -1,42 +1,16 @@
 import Head from "next/head";
-import { Heading, Box, Wrap, WrapItem, Text, Link, Image } from '@chakra-ui/react'
+import { Heading, Box, Wrap } from '@chakra-ui/react';
 import Layout from "../../components/Layout";
-import Colour from "../../color/napalearncolor"
-import NextLink from "next/link"
-import { useEffect, useState, React } from 'react'
-
-
+import Colour from "../../color/napalearncolor";
+import BoxLearningProfessional from '../../components/BoxLearningProfessional';
 
 export default function professionalusic() {
-
-      const [userID, setuserID] = useState('')
-      useEffect(() => {
-            setuserID(sessionStorage.getItem('usernumberID'))
-      }, [])
-
       let line = {
             bgColor: Colour.Darkblue,
             width: '100%',
             marginTop: '12px',
             height: '2px',
       }
-
-      let menu = {
-            bgColor: Colour.White,
-            width: '500px',
-            height: '300px',
-            marginTop: '36px',
-            padding: "15px 15px 15px 15px",
-      }
-
-      let text = {
-            bgColor: Colour.White,
-            width: '400px',
-            marginLeft: '10px',
-            marginTop: '8px',
-
-      }
-
 
       return (
             <div>
@@ -50,49 +24,8 @@ export default function professionalusic() {
                               <Heading color='#3E3C6E' size='2xl'>Professional Skills</Heading>
                               <Box sx={line}></Box>
                               <Wrap align='center' justify='center' spacingX='50px' spacingY='12px'>
-                                    <WrapItem>
-                                          <NextLink href='/professional/article' passHref >
-                                                <Link _hover={{
-                                                      color: Colour.FirstPink,
-                                                }}>
-                                                      <Box sx={menu} boxShadow='lg' p='6' rounded='md'>
-                                                            <Image align='center'
-                                                                  src='/image/article.jpg'
-                                                                  alt="Picture"
-                                                                  height='75%'
-                                                                  width='100%'
-                                                                  rounded='md'                                                                                                                     
-                                                            />
-                                                            <Box sx={text}>
-                                                                  <Heading align="left" color="#3E3C6E" size='xl'>Article</Heading>
-                                                                  <Text align="left">Read for capable of stirring up fresh life endlessly</Text>
-                                                            </Box>
-                                                      </Box>
-                                                </Link>
-                                          </NextLink>
-                                    </WrapItem>
-
-                                    <WrapItem>
-                                          <NextLink href={`/professional/workshop`}  passHref >
-                                                <Link _hover={{
-                                                      color: Colour.FirstPink,
-                                                }}>
-                                                      <Box sx={menu} boxShadow='lg' p='6' rounded='md'>
-                                                            <Image align='center'
-                                                                  src='/image/workshop.jpg'
-                                                                  alt="Picture"
-                                                                  height='75%'
-                                                                  width='100%'
-                                                                  rounded='md'
-                                                            />
-                                                            <Box sx={text}>
-                                                                  <Heading align="left" color="#3E3C6E" size='xl'>Work Shop</Heading>
-                                                                  <Text align="left">Find the hobby that you love to be career</Text>
-                                                            </Box>
-                                                      </Box>
-                                                </Link>
-                                          </NextLink>
-                                    </WrapItem>
+                                    <BoxLearningProfessional link={`/professional/article`} image='/image/article.jpg' headding='Article' text='Read for capable of stirring up fresh life endlessly' />
+                                    <BoxLearningProfessional link={`/professional/workshop`} image='/image/workshop.jpg' headding='Work Shop' text='Find the hobby that you love to be career' />
                               </Wrap>
                         </div>
                   </Layout>

@@ -1,16 +1,19 @@
 import Head from "next/head";
-import {Heading, Wrap, Box, Flex, Center, AspectRatio, useCheckboxGroup, useCheckbox, Text, chakra, useToast, Alert, AlertIcon, Badge, Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
-import Layout from "../../../components/Layout"
-import Colour from "../../../color/napalearncolor"
-import { useEffect, useState } from 'react'
-import axios from 'axios'
-import { FiChevronRight, FiChevronLeft, FiChevronsRight, FiChevronsLeft} from "react-icons/fi";
+import {
+    Heading, Wrap, Box, Flex, Center, AspectRatio, useCheckboxGroup, useCheckbox, Text, chakra,
+    useToast, Alert, AlertIcon, Badge, Tabs, TabList, TabPanels, Tab, TabPanel
+} from '@chakra-ui/react'
+import Layout from "../../../components/Layout";
+import Colour from "../../../color/napalearncolor";
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { FiChevronRight, FiChevronLeft, FiChevronsRight, FiChevronsLeft } from "react-icons/fi";
 import { BiSearchAlt } from "react-icons/bi";
-import { encode } from 'js-base64'
-import { useRouter } from 'next/router'
-import ButtonNAL from '../../../components/Button'
-import Pagination from '../../../components/Pagination'
-import Search from '../../../components/Search'
+import { encode } from 'js-base64';
+import { useRouter } from 'next/router';
+import ButtonNAL from '../../../components/Button';
+import Pagination from '../../../components/Pagination';
+import Search from '../../../components/Search';
 import url from "../../url";
 
 function CustomCheckbox(props) {
@@ -74,7 +77,6 @@ export default (props) => {
     const [search, setSearch] = useState('')
     const [filter, setFilter] = useState('')
     const { value, getCheckboxProps } = useCheckboxGroup({ onChange: (value) => { setFilter(value); setPage(1) } })
-    const toast = useToast()
 
     const fetchData = async () => {
         console.log(filter)
@@ -151,7 +153,6 @@ export default (props) => {
                 filter13: encode(skilltostring13),
             }
         })
-
         setmaterial(result.data)
         if (result.data.length !== 0) {
             setPageAmount(result.data[0].page_amount)
@@ -172,13 +173,11 @@ export default (props) => {
         marginTop: '12px',
         height: '2px',
     }
-
     let boxPagination = {
         width: '100%',
         maxWidth: '1250px',
         marginTop: '25px',
     }
-
     let boxMaterial = {
         bgColor: Colour.White,
         width: '275px',
@@ -192,14 +191,12 @@ export default (props) => {
         p: "12px",
         marginTop: '-6px',
     }
-
     let boxTab = {
         width: '100%',
         maxWidth: '1250px',
         height: '100%',
         padding: '6px',
     }
-
     let boxFilter = {
         width: '100%',
         maxWidth: '1250px',
@@ -221,7 +218,15 @@ export default (props) => {
                         <Box sx={boxTab}>
                             <Tabs variant='soft-rounded' marginLeft='-25px' >
                                 <TabList>
-                                    <Tab _selected={{ color: 'purple', bgColor: 'pink' }} _hover={{ bg: 'White', border: '2px solid', color: Colour.FirstPink }}>
+                                    <Tab _selected={{
+                                        color: 'purple',
+                                        bgColor: 'pink'
+                                    }}
+                                        _hover={{
+                                            bg: 'White',
+                                            border: '2px solid',
+                                            color: Colour.FirstPink
+                                        }}>
                                         <Heading size='md'>Filter By Skills</Heading></Tab>
                                     <Tab _selected={{ color: 'purple', bgColor: 'pink' }} _hover={{ bg: 'White', border: '2px solid', color: Colour.FirstPink }}>
                                         <Heading size='md'>Filter By Missing Skills</Heading></Tab>
@@ -277,23 +282,13 @@ export default (props) => {
                     <Flex align="center" justify="center" m={6}>
                         <Box sx={boxPagination}>
                             <Flex align="center" justify="center" gap="10">
-                                <Pagination text="First Page" disabled={page === 1} icon={<FiChevronsLeft />} page={() => {
-                                    setPage(1)
-                                }} />
-                                <Pagination text="Prev Page" disabled={page === 1} icon={<FiChevronLeft />} page={() => {
-                                    if (page > 1)
-                                        setPage(page - 1)
-                                }} />
+                                <Pagination text="First Page" disabled={page === 1} icon={<FiChevronsLeft />} page={() => { setPage(1) }} />
+                                <Pagination text="Prev Page" disabled={page === 1} icon={<FiChevronLeft />} page={() => { if (page > 1) setPage(page - 1) }} />
                                 <center>
                                     <Heading size='md' color="#3E3C6E">Page {page} of {pageAmount}</Heading>
                                 </center>
-                                <Pagination text="Next Page" disabled={page === parseInt(pageAmount)} icon2={<FiChevronRight />} page={() => {
-                                    if (page < pageAmount)
-                                        setPage(page + 1)
-                                }} />
-                                <Pagination text="Last Page" disabled={page === parseInt(pageAmount)} icon2={<FiChevronsRight />} page={() => {
-                                    setPage(parseInt(pageAmount))
-                                }} />
+                                <Pagination text="Next Page" disabled={page === parseInt(pageAmount)} icon2={<FiChevronRight />} page={() => { if (page < pageAmount) setPage(page + 1) }} />
+                                <Pagination text="Last Page" disabled={page === parseInt(pageAmount)} icon2={<FiChevronsRight />} page={() => { setPage(parseInt(pageAmount)) }} />
                             </Flex>
                         </Box>
                     </Flex>

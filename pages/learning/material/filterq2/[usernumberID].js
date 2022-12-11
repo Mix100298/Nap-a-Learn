@@ -1,15 +1,15 @@
 import Head from "next/head";
-import {Heading, Wrap, Box, Flex, Button, Center, AspectRatio, useToast, Alert, AlertIcon, Badge} from '@chakra-ui/react'
-import Layout from "../../../../components/Layout"
-import Colour from "../../../../color/napalearncolor"
-import { useEffect, useState } from 'react'
-import axios from 'axios'
-import { FiChevronRight, FiChevronLeft, FiChevronsRight, FiChevronsLeft} from "react-icons/fi";
+import {Heading, Wrap, Box, Flex, Button, Center, AspectRatio, useToast, Alert, AlertIcon, Badge} from '@chakra-ui/react';
+import Layout from "../../../../components/Layout";
+import Colour from "../../../../color/napalearncolor";
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { FiChevronRight, FiChevronLeft, FiChevronsRight} from "react-icons/fi";
 import { BiSearchAlt } from "react-icons/bi";
-import { encode } from 'js-base64'
-import { useRouter } from 'next/router'
-import Pagination from '../../../../components/Pagination'
-import Search from '../../../../components/Search'
+import { encode } from 'js-base64';
+import { useRouter } from 'next/router';
+import Pagination from '../../../../components/Pagination';
+import Search from '../../../../components/Search';
 import url from "../../../url";
 
 export default (props) => {
@@ -96,7 +96,6 @@ export default (props) => {
                 filter13: encode(skilltostring13),
             }
         })
-
         setmaterial(result.data)
         if (result.data.length !== 0) {
             setPageAmount(result.data[0].page_amount)
@@ -117,35 +116,30 @@ export default (props) => {
         marginTop: '12px',
         height: '2px',
     }
-
     let boxPagination = {
         width: '100%',
         maxWidth: '1250px',
         marginTop: '25px',
     }
-
     let boxMaterial = {
         bgColor: Colour.White,
         width: '275px',
         height: '300px',
         boxShadow: 'lg',
         rounded: 'md',
-    }
-    
+    }   
     let boxTopic = {
         width: '100%',
         height: '150px',
         p: "12px",
         marginTop: '-6px',
     }
-
     let boxTab = {
         width: '100%',
         maxWidth: '1250px',
         height: '100%',
         padding: '6px',
     }
-
     let boxFilter = {
         width: '100%',
         maxWidth: '1250px',
@@ -169,22 +163,16 @@ export default (props) => {
     let aresponse16 = parseInt(props.responseData.aresponse16)
     let aresponse17 = parseInt(props.responseData.aresponse17)
     let aresponse18 = parseInt(props.responseData.aresponse18)
-
     let apoint = aresponse1 + aresponse2 + aresponse3 + aresponse4 + aresponse5 + aresponse6 + aresponse7 + aresponse8 + aresponse9 + aresponse10 +
         aresponse11 + aresponse12 + aresponse13 + aresponse14 + aresponse15 + aresponse16 + aresponse17 + aresponse18
-
     let acheck = (apoint) < 0 ? 1 : 0
-
     let skill11 = (aresponse1 + aresponse2 + aresponse3 + aresponse4 + aresponse5) <= 3 ? 0 : 1
     let skill12 = (aresponse6 + aresponse7 + aresponse8 + aresponse9 + aresponse10 + aresponse11 + aresponse12) <= 5 ? 0 : 1
     let skill13 = (aresponse13 + aresponse14 + aresponse15 + aresponse16 + aresponse17 + aresponse18) <= 4 ? 0 : 1
-
     let textskill11 = (skill11) == 0 ? 'ทักษะด้านพฤติกรรมและอารมณ์ ' : ''
     let textskill12 = (skill12) == 0 ? 'ทักษะด้านการสื่อความหมาย ' : ''
     let textskill13 = (skill13) == 0 ? 'ทักษะด้านสังคม ' : ''
-
     let alltext = textskill11 + textskill12 + textskill13
-
     let alltext3 = (alltext) == 0 ? 1 : 0
     let alltext5 = (alltext) == 0 ? 'None missing skill' : ''
 
@@ -213,7 +201,6 @@ export default (props) => {
                                 {(acheck) == 1 ?
                                     <Heading size='lg' color="#FF7121"> You have not completed the questionnaire yet </Heading> :
                                     <Heading size='lg' color="#3E3C6E"> Skills you are missing include : {alltext} {alltext5}</Heading>}
-
                                 {(acheck) || (alltext3) == 1 ?
                                     <Button isDisabled bg="#FE979C" color="#FFFFFF" border='2px solid' borderColor='#FF969B' mr={3} mt={4}
                                         _hover={{
@@ -239,7 +226,6 @@ export default (props) => {
                                         }}>
                                         Filter Missing Skills
                                     </Button>}
-
                                 {(acheck) || (alltext3) == 1 ?
                                     <Button isDisabled bg="#FE979C" color="#FFFFFF" border='2px solid' borderColor='#FF969B' mr={3} mt={4} _hover={{
                                         bg: 'White',
@@ -267,7 +253,6 @@ export default (props) => {
                                     </Button>}
                             </Box>
                         </Box>
-
                         {
                             material.map((item, index) => {
                                 return (
@@ -286,29 +271,16 @@ export default (props) => {
                                 )
                             })
                         }
-
                     </Wrap>
-
                     <Flex align="center" justify="center" m={6}>
                         <Box sx={boxPagination}>
                             <Flex align="center" justify="center" gap="10">
-                                <Pagination text="First Page" disabled={page === 1} icon={<FiChevronsLeft />} page={() => {
-                                    setPage(1)
-                                }} />
-                                <Pagination text="Prev Page" disabled={page === 1} icon={<FiChevronLeft />} page={() => {
-                                    if (page > 1)
-                                        setPage(page - 1)
-                                }} />
+                            <Pagination text="Prev Page" disabled={page === 1} icon={<FiChevronLeft />} page={() => { if (page > 1) setPage(page - 1) }} />
                                 <center>
                                     <Heading size='md' color="#3E3C6E">Page {page} of {pageAmount}</Heading>
                                 </center>
-                                <Pagination text="Next Page" disabled={page === parseInt(pageAmount)} icon2={<FiChevronRight />} page={() => {
-                                    if (page < pageAmount)
-                                        setPage(page + 1)
-                                }} />
-                                <Pagination text="Last Page" disabled={page === parseInt(pageAmount)} icon2={<FiChevronsRight />} page={() => {
-                                    setPage(parseInt(pageAmount))
-                                }} />
+                                <Pagination text="Next Page" disabled={page === parseInt(pageAmount)} icon2={<FiChevronRight />} page={() => { if (page < pageAmount) setPage(page + 1) }} />
+                                <Pagination text="Last Page" disabled={page === parseInt(pageAmount)} icon2={<FiChevronsRight />} page={() => { setPage(parseInt(pageAmount)) }} />
                             </Flex>
                         </Box>
                     </Flex>

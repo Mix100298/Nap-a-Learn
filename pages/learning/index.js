@@ -1,41 +1,16 @@
 import Head from "next/head";
-import { Heading, Box, Wrap, WrapItem, Text, Link, Image } from '@chakra-ui/react'
+import { Heading, Box, Wrap } from '@chakra-ui/react';
 import Layout from "../../components/Layout";
-import Colour from "../../color/napalearncolor"
-import NextLink from "next/link"
-import { useEffect, useState, React } from 'react'
-
+import Colour from "../../color/napalearncolor";
+import BoxLearningProfessional from '../../components/BoxLearningProfessional';
 
 export default () => {
-
-      const [userID, setuserID] = useState('')
-      useEffect(() => {
-            setuserID(sessionStorage.getItem('usernamberID'))
-      }, [])
-
       let line = {
             bgColor: Colour.Darkblue,
             width: '100%',
             marginTop: '12px',
             height: '2px',
       }
-
-      let menu = {
-            bgColor: Colour.White,
-            width: '500px',
-            height: '300px',
-            marginTop: '36px',
-            padding: "15px 15px 15px 15px",
-      }
-
-      let text = {
-            bgColor: Colour.White,
-            width: '400px',
-            marginLeft: '10px',
-            marginTop: '8px',
-
-      }
-
 
       return (
             <div>
@@ -49,49 +24,8 @@ export default () => {
                               <Heading color='#3E3C6E' size='2xl'>Learning Materials</Heading>
                               <Box sx={line}></Box>
                               <Wrap align='center' justify='center' spacingX='50px' spacingY='12px'>
-                                    <WrapItem>
-                                          <NextLink href='/learning/article' passHref >
-                                                <Link _hover={{
-                                                      color: Colour.FirstPink,
-                                                }}>
-                                                      <Box sx={menu} boxShadow='lg' p='6' rounded='md'>
-                                                            <Image align='center'
-                                                                  src='/image/articlelearning.jpg'
-                                                                  alt="Picture"
-                                                                  height='75%'
-                                                                  width='100%'
-                                                                  rounded='md'
-                                                            />
-                                                            <Box sx={text}>
-                                                                  <Heading align="left" color="#3E3C6E" size='xl'>Article</Heading>
-                                                                  <Text align="left">Read more to improve youself</Text>
-                                                            </Box>
-                                                      </Box>
-                                                </Link>
-                                          </NextLink>
-                                    </WrapItem>
-
-                                    <WrapItem>
-                                          <NextLink href={`/learning/material`} passHref>
-                                                <Link _hover={{
-                                                      color: Colour.FirstPink,
-                                                }}>
-                                                      <Box sx={menu} boxShadow='lg' p='6' rounded='md'>
-                                                            <Image align='center'
-                                                                  src='/image/material.png'
-                                                                  alt="Picture"
-                                                                  height='75%'
-                                                                  width='100%'
-                                                                  rounded='md'
-                                                            />
-                                                            <Box sx={text}>
-                                                                  <Heading align="left" color="#3E3C6E" size='xl'>Material</Heading>
-                                                                  <Text align="left">online playground for you</Text>
-                                                            </Box>
-                                                      </Box>
-                                                </Link>
-                                          </NextLink>
-                                    </WrapItem>
+                                    <BoxLearningProfessional link={`/learning/article`} image='/image/articlelearning.jpg' headding='Article' text='Read more to improve youself' />
+                                    <BoxLearningProfessional link={`/learning/material`} image='/image/material.png' headding='Material' text='online playground for you' />
                               </Wrap>
                         </div>
                   </Layout>

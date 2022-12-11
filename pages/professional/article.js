@@ -1,16 +1,16 @@
 import Head from "next/head";
-import { Heading, Wrap, WrapItem, Box, Table, Tbody, Tr, Td, TableContainer, Flex} from '@chakra-ui/react'
-import Layout from "../../components/Layout"
-import Colour from "../../color/napalearncolor"
-import { useEffect, useState } from 'react'
-import axios from 'axios'
+import { Heading, Wrap, WrapItem, Box, Table, Tbody, Tr, Td, TableContainer, Flex } from '@chakra-ui/react';
+import Layout from "../../components/Layout";
+import Colour from "../../color/napalearncolor";
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 import { FiChevronRight, FiChevronLeft, FiChevronsRight, FiChevronsLeft } from "react-icons/fi";
-import { encode } from 'js-base64'
+import { encode } from 'js-base64';
 import { BiSearchAlt } from "react-icons/bi";
-import { useRouter } from 'next/router'
-import Pagination from '../../components/Pagination'
-import Search from '../../components/Search'
-import url from '../url'
+import { useRouter } from 'next/router';
+import Pagination from '../../components/Pagination';
+import Search from '../../components/Search';
+import url from '../url';
 
 export default () => {
     const router = useRouter()
@@ -45,22 +45,18 @@ export default () => {
         marginTop: '10px',
         padding: "0px 0px 0px 0px",
     }
-
     let boxImage = {
         width: '150px',
     }
-
     let boxText = {
         whiteSpace: "pre",
         width: "800px",
         overflow: "hidden",
     }
-
     let boxPagination = {
         width: '1100px',
         marginTop: '25px',
     }
-
     let searchbox = {
         width: '1100px',
     }
@@ -114,23 +110,13 @@ export default () => {
                     <Flex align="center" justify="center" m={6}>
                         <Box sx={boxPagination}>
                             <Flex align="center" justify="center" gap="10">
-                                <Pagination text="First Page" disabled={page === 1} icon={<FiChevronsLeft />} page={() => {
-                                    setPage(1)
-                                }} />
-                                <Pagination text="Prev Page" disabled={page === 1} icon={<FiChevronLeft />} page={() => {
-                                    if (page > 1)
-                                        setPage(page - 1)
-                                }} />
+                                <Pagination text="First Page" disabled={page === 1} icon={<FiChevronsLeft />} page={() => { setPage(1) }} />
+                                <Pagination text="Prev Page" disabled={page === 1} icon={<FiChevronLeft />} page={() => { if (page > 1) setPage(page - 1) }} />
                                 <center>
                                     <Heading size='md' color="#3E3C6E">Page {page} of {pageAmount}</Heading>
                                 </center>
-                                <Pagination text="Next Page" disabled={page === parseInt(pageAmount)} icon2={<FiChevronRight />} page={() => {
-                                    if (page < pageAmount)
-                                        setPage(page + 1)
-                                }} />
-                                <Pagination text="Last Page" disabled={page === parseInt(pageAmount)} icon2={<FiChevronsRight />} page={() => {
-                                    setPage(parseInt(pageAmount))
-                                }} />
+                                <Pagination text="Next Page" disabled={page === parseInt(pageAmount)} icon2={<FiChevronRight />} page={() => { if (page < pageAmount) setPage(page + 1) }} />
+                                <Pagination text="Last Page" disabled={page === parseInt(pageAmount)} icon2={<FiChevronsRight />} page={() => { setPage(parseInt(pageAmount)) }} />
                             </Flex>
                         </Box>
                     </Flex>
