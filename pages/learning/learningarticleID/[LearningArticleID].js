@@ -8,8 +8,6 @@ import url from '../../url'
 
 export default (props) => {
 
-    const router = useRouter()
-
     let line = {
         bgColor: Colour.Darkblue,
         width: '100%',
