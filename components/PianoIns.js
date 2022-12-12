@@ -3,10 +3,14 @@ import { Piano, KeyboardShortcuts, MidiNumbers } from 'react-piano';
 import 'react-piano/dist/styles.css';
 import Soundfont from 'soundfont-player';
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 // piano function
 function PianoIns() {
 
+    const router = useRouter()
+    const query = router.query
+    console.log(query)
     const firstNote = MidiNumbers.fromNote('c3')
     const lastNote = MidiNumbers.fromNote('f5')
     const keyboardShortcuts = KeyboardShortcuts.create({
@@ -16,9 +20,10 @@ function PianoIns() {
     })
     const [instrument, setInstrument] = useState('c3')
     useEffect(() => {
+        if (query) {
         Soundfont.instrument(new AudioContext(), 'acoustic_grand_piano').then((instrument) => {
             setInstrument(instrument)
-        })
+        })}
     }, [])
 
     return (
