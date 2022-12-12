@@ -155,14 +155,14 @@ export default (props) => {
 
     for (let i = 0; i <= 19; i++) {
         point = point + parseInt(response[i])
-      }
+    }
 
     let check = (point) < 0 ? 1 : 0
 
-    for (let i = 0; i <= 18; i+=2) {
+    for (let i = 0; i <= 18; i += 2) {
         skill[i] = (parseInt(response[i]) + parseInt(response[i])) == 0 ? 0 : 1
         pointskills = pointskills + skill[i]
-      }
+    }
     let textskill1 = (skill[0]) == 0 ? 'ทักษะการสื่อสาร ' : ''
     let textskill2 = (skill[2]) == 0 ? 'ทักษะการดูแลตัวเอง ' : ''
     let textskill3 = (skill[4]) == 0 ? 'ทักษะการดำรงชีวิต ' : ''
@@ -173,7 +173,7 @@ export default (props) => {
     let textskill8 = (skill[14]) == 0 ? 'ทักษะการทำงาน ' : ''
     let textskill9 = (skill[16]) == 0 ? 'ทักษะการใช้เวลาว่าง ' : ''
     let textskill10 = (skill[18]) == 0 ? 'ทักษะการรักษาสุขอนามัย ' : ''
-    
+
     // show missing skills from questionnaire
     let alltext = textskill1 + textskill2 + textskill3 + textskill4 + textskill5 + textskill6 + textskill7 + textskill8 + textskill9 + textskill10
     let alltext4 = (alltext) == 0 ? 1 : 0
@@ -202,24 +202,24 @@ export default (props) => {
                         <Box sx={boxTab}>
                             <Heading color="#3E3C6E" size='xl' marginBottom='12px'>Filter By Questionnaire 1</Heading>
                             <Box sx={boxFilter}> {/* check the questionnaire, show missing skills and filter by missing skills */}
-                                {(check) == 1 ? 
+                                {(check) == 1 ?
                                     <Heading size='lg' color="#FF7121"> You have not completed the questionnaire yet </Heading> :
                                     <Heading size='lg' color="#3E3C6E"> Skills you are missing include : {alltext} {alltext6}</Heading>}
                                 {(check) || (alltext4) == 1 ?
                                     <Button isDisabled bg="#FE979C" color="#FFFFFF" border='2px solid' borderColor='#FF969B' mr={3} mt={4}
                                         _hover={{ bg: 'White', border: '2px solid', color: Colour.FirstPink }}>
                                         Filter Missing Skills
-                                    </Button> : 
-                                    <Button bg="#FE979C" color="#FFFFFF" border='2px solid' borderColor='#FF969B' mr={3} mt={4} 
-                                    onClick={() => onFilterClick() & toast({
-                                        position: 'bottom-right',
-                                        render: () => (
-                                            <Alert status='success' color="#FFFFFF" bg="#FF969B">
-                                                <AlertIcon color="#FFFFFF" />
-                                                Missing Skills !
-                                            </Alert>
-                                        ),
-                                    })}
+                                    </Button> :
+                                    <Button bg="#FE979C" color="#FFFFFF" border='2px solid' borderColor='#FF969B' mr={3} mt={4}
+                                        onClick={() => onFilterClick() & toast({
+                                            position: 'bottom-right',
+                                            render: () => (
+                                                <Alert status='success' color="#FFFFFF" bg="#FF969B">
+                                                    <AlertIcon color="#FFFFFF" />
+                                                    Missing Skills !
+                                                </Alert>
+                                            ),
+                                        })}
                                         _hover={{ bg: 'White', border: '2px solid', color: Colour.FirstPink }}>
                                         Filter Missing Skills
                                     </Button>}
@@ -228,17 +228,17 @@ export default (props) => {
                                         _hover={{ bg: 'White', border: '2px solid', color: Colour.FirstPink }}>
                                         Delete Filter
                                     </Button> :
-                                    <Button bg="#FE979C" color="#FFFFFF" border='2px solid' borderColor='#FF969B' mr={3} mt={4} 
-                                    onClick={() => setFilter('') & toast({
-                                        position: 'bottom-right',
-                                        isClosable: true,
-                                        render: () => (
-                                            <Alert status='success' color="#FFFFFF" bg="#FF969B">
-                                                <AlertIcon color="#FFFFFF" />
-                                                Delete Missing Skills !
-                                            </Alert>
-                                        ),
-                                    })}
+                                    <Button bg="#FE979C" color="#FFFFFF" border='2px solid' borderColor='#FF969B' mr={3} mt={4}
+                                        onClick={() => setFilter('') & toast({
+                                            position: 'bottom-right',
+                                            isClosable: true,
+                                            render: () => (
+                                                <Alert status='success' color="#FFFFFF" bg="#FF969B">
+                                                    <AlertIcon color="#FFFFFF" />
+                                                    Delete Missing Skills !
+                                                </Alert>
+                                            ),
+                                        })}
                                         _hover={{ bg: 'White', border: '2px solid', color: Colour.FirstPink }}>
                                         Delete Filter
                                     </Button>}

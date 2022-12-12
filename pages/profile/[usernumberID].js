@@ -8,6 +8,8 @@ import ImageModal from "../../components/ImageModal";
 import Layout from "../../components/Layout";
 import PasswordModal from "../../components/PasswordModal";
 import url from '../url';
+import ButtonClick from '../../components/ButtonClick';
+import FormProfile from '../../components/FormProfile';
 
 export default (props) => {
     const router = useRouter()
@@ -80,14 +82,6 @@ export default (props) => {
     let pinkbutton = {
         backgroundColor: '#FE979B'
     }
-    let FormBox = {
-        minW: '200px',
-        maxW: '600px',
-        height: '40px',
-        borderRadius: 'lg',
-        backgroundColor: 'white',
-        align: 'center',
-    }
 
     return (
         <div className="">
@@ -131,86 +125,42 @@ export default (props) => {
                 {/* show detail profile */}
                 <Grid templateColumns='repeat(20, 2fr)' marginLeft='30px' marginTop='30px'>
                     <GridItem colStart={4} colEnd={10}>
-                        <FormControl isRequired isInvalid={error && !form.username}>
-                            <FormLabel htmlFor='username' fontSize='20px' >Username</FormLabel>
-                            <Box sx={FormBox}>
-                                <Input id='username' value={form.username} isDisabled='true' _disabled={{ opacity: 0.6 }}
-                                    colorScheme="white" focusBorderColor={Colour.FirstPink}
-                                    onChange={(e) => { setForm({ ...form, username: e.target.value }) }}
-                                /></Box>
-                        </FormControl>
+                        <FormProfile check={error && !form.username} id='username' value={form.username} text='Username'
+                            disable='true' change={(e) => { setForm({ ...form, username: e.target.value }) }} />
                     </GridItem>
                     <GridItem colStart={11} colEnd={17}>
-                        <FormControl isRequired isInvalid={error && !form.id}>
-                            <FormLabel htmlFor='id' fontSize='20px' >CitizenID</FormLabel>
-                            <Box sx={FormBox}>
-                                <Input id='id' value={form.id} isDisabled='true' _disabled={{ opacity: 0.6 }}
-                                    colorScheme="white" focusBorderColor={Colour.FirstPink}
-                                    onChange={(e) => { setForm({ ...form, id: e.target.value }) }}
-                                /></Box>
-                        </FormControl>
+                        <FormProfile check={error && !form.id} id='id' value={form.id} text='ID'
+                            disable='true' change={(e) => { setForm({ ...form, id: e.target.value }) }} />
                     </GridItem>
                 </Grid>
                 <Grid templateColumns='repeat(20, 2fr)' marginLeft='30px' marginTop='12px'>
                     <GridItem colStart={4} colEnd={10}>
-                        <FormControl isRequired isInvalid={error && !form.firstname}>
-                            <FormLabel htmlFor='first-name' fontSize='20px' >Firstname</FormLabel>
-                            <Box sx={FormBox}>
-                                <Input id='first-name' value={form.firstname} isDisabled={!isEdit} _disabled={{ opacity: 0.6 }}
-                                    colorScheme="white" focusBorderColor={Colour.FirstPink}
-                                    onChange={(e) => { setForm({ ...form, firstname: e.target.value }) }}
-                                /></Box>
-                        </FormControl>
+                        <FormProfile check={error && !form.firstname} id='firstname' value={form.firstname} text='Firstname'
+                            disable={!isEdit} change={(e) => { setForm({ ...form, firstname: e.target.value }) }} />
                     </GridItem>
                     <GridItem colStart={11} colEnd={17}>
-                        <FormControl isRequired isInvalid={error && !form.lastname}>
-                            <FormLabel htmlFor='last-name' fontSize='20px' >Lastname</FormLabel>
-                            <Box sx={FormBox}>
-                                <Input id='last-name' value={form.lastname} isDisabled={!isEdit} _disabled={{ opacity: 0.6 }}
-                                    colorScheme="white" focusBorderColor={Colour.FirstPink}
-                                    onChange={(e) => { setForm({ ...form, lastname: e.target.value }) }}
-                                /></Box>
-                        </FormControl>
+                        <FormProfile check={error && !form.lastname} id='lastname' value={form.lastname} text='Lastname'
+                            disable={!isEdit} change={(e) => { setForm({ ...form, lastname: e.target.value }) }} />
                     </GridItem>
                 </Grid>
                 <Grid templateColumns='repeat(20, 2fr)' marginLeft='30px' marginTop='12px'>
                     <GridItem colStart={4} colEnd={10}>
-                        <FormControl isRequired isInvalid={error && !form.dob}>
-                            <FormLabel htmlFor='dob' fontSize='20px' >DateOfBirth</FormLabel>
-                            <Box sx={FormBox}>
-                                <Input id='dob' value={form.dob} isDisabled={!isEdit} _disabled={{ opacity: 0.6 }}
-                                    colorScheme="white" focusBorderColor={Colour.FirstPink}
-                                    onChange={(e) => { setForm({ ...form, dob: e.target.value }) }}
-                                /></Box>
-                        </FormControl>
+                        <FormProfile check={error && !form.dob} id='dob' value={form.dob} text='Date of Birth'
+                            disable={!isEdit} change={(e) => { setForm({ ...form, dob: e.target.value }) }} />
                     </GridItem>
                     <GridItem colStart={11} colEnd={17}>
-                        <FormControl isRequired isInvalid={error && !form.tel}>
-                            <FormLabel htmlFor='tel' fontSize='20px' >Telephone</FormLabel>
-                            <Box sx={FormBox}>
-                                <Input id='tel' value={form.tel} isDisabled={!isEdit} _disabled={{ opacity: 0.6 }}
-                                    colorScheme="white" focusBorderColor={Colour.FirstPink}
-                                    onChange={(e) => { setForm({ ...form, tel: e.target.value }) }}
-                                /></Box>
-                        </FormControl>
+                        <FormProfile check={error && !form.tel} id='tel' value={form.tel} text='Telephone'
+                            disable={!isEdit} change={(e) => { setForm({ ...form, tel: e.target.value }) }} />
                     </GridItem>
                 </Grid>
 
                 <Center> {/* when click edit to change submit and cencel */}
                     {!isEdit ?
-                        <Button marginTop='40px' colorScheme='' size='lg' sx={pinkbutton} _hover={{
-                            bg: 'White', border: '2px solid', color: Colour.FirstPink
-                        }} onClick={() => setIsEdit(true)}> Edit
-                        </Button> :
+                        <ButtonClick text='Edit' click={() => setIsEdit(true)} /> :
                         <ButtonGroup>
-                            <Button marginTop='40px' colorScheme='' size='lg' sx={pinkbutton} _hover={{
-                                bg: 'White', border: '2px solid', color: Colour.FirstPink
-                            }} onClick={() => onSummitClick()}> Submit
-                            </Button>
-                            <Button marginTop='40px' colorScheme='' size='lg' sx={pinkbutton} _hover={{
-                                bg: 'White', border: '2px solid', color: Colour.FirstPink
-                            }} onClick={() => setIsEdit(false)}> Cencel
-                            </Button></ButtonGroup>
+                            <ButtonClick text='Submit' click={() => onSummitClick()} />
+                            <ButtonClick text='Cancel' click={() => setIsEdit(false)} />
+                        </ButtonGroup>
                     }</Center>
 
                 <div className="p-4 mt-1">

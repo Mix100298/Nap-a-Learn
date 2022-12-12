@@ -11,6 +11,8 @@ import { BsFillTelephoneFill } from "react-icons/bs";
 import { FaUser } from "react-icons/fa";
 import { RiLockPasswordFill } from "react-icons/ri";
 import Colour from "../color/napalearncolor";
+import FormRegister from '../components/FormRegister';
+import PasswordRegister from '../components/PasswordRegister';
 import url from './url';
 
 export default function Home() {
@@ -170,86 +172,33 @@ export default function Home() {
 
             <Box sx={boxLogin} align="center" justify="center" >
               <Stack spacing={6}>
-                <Flex gap={6}>
-                  <InputGroup size='md'> {/* from register */}
-                    <InputLeftElement pointerEvents='none' children={<FaUser size={20} color="white" />} />
-                    <Input placeholder='Firstname' _placeholder={{ opacity: 0.8, color: 'white' }}
-                      focusBorderColor={Colour.FirstPink} color="white" colorScheme="white"
-                      value={form.firstname} onChange={(e) => setForm({ ...form, firstname: e.target.value })} />
-                  </InputGroup>
-                  <InputGroup size='md'>
-                    <InputLeftElement pointerEvents='none' children={<FaUser size={20} color="white" />} />
-                    <Input placeholder='Lastname' _placeholder={{ opacity: 0.8, color: 'white' }}
-                      focusBorderColor={Colour.FirstPink} color="white" colorScheme="white"
-                      value={form.lastname} onChange={(e) => setForm({ ...form, lastname: e.target.value })} />
-                  </InputGroup>
+                <Flex gap={6}> {/* from register */}
+                  <FormRegister icon={<FaUser size={20} color="white" />} text='Firstname'
+                    value={form.firstname} change={(e) => setForm({ ...form, firstname: e.target.value })} />
+                  <FormRegister icon={<FaUser size={20} color="white" />} text='Lastname'
+                    value={form.lastname} change={(e) => setForm({ ...form, lastname: e.target.value })} />
                 </Flex>
-                <InputGroup size='md'>
-                  <InputLeftElement pointerEvents='none' children={<AiFillIdcard size={20} color="white" />} />
-                  <Input placeholder='ID' _placeholder={{ opacity: 0.8, color: 'white' }}
-                    focusBorderColor={Colour.FirstPink} color="white" colorScheme="white"
-                    value={form.id} onChange={(e) => setForm({ ...form, id: e.target.value })} />
-                </InputGroup>
-                <InputGroup size='md'>
-                  <InputLeftElement pointerEvents='none' children={<FaUser size={20} color="white" />} />
-                  <Input placeholder='Username' _placeholder={{ opacity: 0.8, color: 'white' }}
-                    focusBorderColor={Colour.FirstPink} color="white" colorScheme="white"
-                    value={form.username} onChange={(e) => setForm({ ...form, username: e.target.value })} />
-                </InputGroup>
-                <InputGroup size='md'>
-                  <InputLeftElement pointerEvents='none' children={<RiLockPasswordFill size={20} color="white" />} />
-                  <Input
-                    pr='4.5rem'
-                    type={show ? 'text' : 'password'}
-                    placeholder='Password'
-                    _placeholder={{ opacity: 0.8, color: 'white' }}
-                    focusBorderColor={Colour.FirstPink}
-                    colorScheme="white"
-                    color="white"
-                    value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })}
-                  />
-                  <InputRightElement width='4.5rem'>
-                    <Button h='1.75rem' size='sm' onClick={handleClick}>
-                      {show ? 'Hide' : 'Show'}
-                    </Button>
-                  </InputRightElement>
-                </InputGroup>
-                <InputGroup size='md'>
-                  <InputLeftElement pointerEvents='none' children={<RiLockPasswordFill size={20} color="white" />} />
-                  <Input
-                    pr='4.5rem'
-                    type={show1 ? 'text' : 'password'}
-                    placeholder='Confirm Password'
-                    _placeholder={{ opacity: 0.8, color: 'white' }}
-                    focusBorderColor={Colour.FirstPink}
-                    colorScheme="white"
-                    color="white"
-                    value={form.confirmpassword} onChange={(e) => setForm({ ...form, confirmpassword: e.target.value })}
-                  />
-                  <InputRightElement width='4.5rem'>
-                    <Button h='1.75rem' size='sm' onClick={handleClick1}>
-                      {show1 ? 'Hide' : 'Show'}
-                    </Button>
-                  </InputRightElement>
-                </InputGroup>
+                <FormRegister icon={<AiFillIdcard size={20} color="white" />} text='ID'
+                  value={form.id} change={(e) => setForm({ ...form, id: e.target.value })} />
+                <FormRegister icon={<FaUser size={20} color="white" />} text='Username'
+                  value={form.username} change={(e) => setForm({ ...form, username: e.target.value })} />
+
+                <PasswordRegister show = {show} form = {form.password} icon = {<RiLockPasswordFill size={20} color="white" />}
+                click = {handleClick} change = {(e) => setForm({ ...form, password: e.target.value })} text='Password'/>
+                <PasswordRegister show = {show1} form = {form.confirmpassword} icon = {<RiLockPasswordFill size={20} color="white" />}
+                click = {handleClick} change = {(e) => setForm({ ...form, confirmpassword: e.target.value })} text='Confirm Password' />
+
                 <Flex gap={6}>
                   <InputGroup size='md'>
                     <InputLeftElement pointerEvents='none' children={<AiTwotoneCalendar size={20} color="white" />} />
                     <Input
-                      placeholder="Select Date of Birth"
-                      color="white"
-                      size="md"
-                      type="date"
+                      placeholder="Select Date of Birth" color="white" size="md" type="date"
                       _placeholder={{ opacity: 0.8, color: 'white' }} focusBorderColor={Colour.FirstPink} colorScheme="white"
                       value={form.dob} onChange={(e) => setForm({ ...form, dob: e.target.value })}
                     />
                   </InputGroup>
-                  <InputGroup size='md'>
-                    <InputLeftElement pointerEvents='none' children={<BsFillTelephoneFill size={20} color="white" />} />
-                    <Input placeholder='Telephone' _placeholder={{ opacity: 0.8, color: 'white' }}
-                      focusBorderColor={Colour.FirstPink} color="white" colorScheme="white"
-                      value={form.telephone} onChange={(e) => setForm({ ...form, telephone: e.target.value })} />
-                  </InputGroup>
+                  <FormRegister icon={<BsFillTelephoneFill size={20} color="white" />} text='Telephone'
+                  value={form.telephone} change={(e) => setForm({ ...form, telephone: e.target.value })} />
                 </Flex>
               </Stack>
             </Box>
@@ -265,7 +214,7 @@ export default function Home() {
               </Button>
             </Box> {/* set wrong word */}
             {
-              (wrong) ? 
+              (wrong) ?
                 <Alert status='error'
                   bg='none'
                   color='red'
