@@ -4,7 +4,7 @@ import { Heading, Box } from "@chakra-ui/react"
 import Colour from "../../color/napalearncolor"
 import Sound from "../../components/Sound"
 
-export default function Rain() {
+export default function Waterfall() {
 
     let line = {
         width: '900',

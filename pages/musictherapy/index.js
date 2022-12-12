@@ -4,7 +4,7 @@ import { Center, Box, Wrap, WrapItem } from "@chakra-ui/react"
 import Colour from "../../color/napalearncolor"
 import MusicMenu from "../../components/MusicMenu"
 
-export default function musicinstrument() {
+export default function MusicInstrument() {
 
     let boxMusic = {
         backgroundColor: 'White',

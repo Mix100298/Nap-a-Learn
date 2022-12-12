@@ -4,7 +4,7 @@ import { Center, Heading, Box, Text } from "@chakra-ui/react"
 import Colour from "../../color/napalearncolor"
 import SoundMenu from "../../components/SoundMenu"
 
-export default function soundtherapy() {
+export default function SoundTherapy() {
 
     let line = {
         width: '900',

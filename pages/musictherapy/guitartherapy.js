@@ -4,7 +4,7 @@ import { Heading, Box } from "@chakra-ui/react"
 import Colour from "../../color/napalearncolor"
 import GuitarIns from "../../components/GuitarIns"
 
-export default function guitar() {
+export default function Guitar() {
 
     let line = {
         width: '1000',
