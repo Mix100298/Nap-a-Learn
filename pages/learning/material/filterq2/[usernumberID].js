@@ -156,9 +156,9 @@ export default (props) => {
     }
 
     let check = (point) < 0 ? 1 : 0
-    let skill11 = (response[0] + response[1] + response[2] + response[3] + response[4]) <= 3 ? 0 : 1
-    let skill12 = (response[5] + response[6] + response[7] + response[8] + response[9] + response[10] + response[11]) <= 5 ? 0 : 1
-    let skill13 = (response[12] + response[13] + response[14] + response[15] + response[16] + response[17]) <= 4 ? 0 : 1
+    let skill11 = (parseInt(response[0]) + parseInt(response[1]) + parseInt(response[2]) + parseInt(response[3]) + parseInt(response[4])) <= 3 ? 0 : 1
+    let skill12 = (parseInt(response[5]) + parseInt(response[6]) + parseInt(response[7]) + parseInt(response[8]) + parseInt(response[9]) + parseInt(response[10]) + parseInt(response[11])) <= 5 ? 0 : 1
+    let skill13 = (parseInt(response[12]) + parseInt(response[13]) + parseInt(response[14]) + parseInt(response[15]) + parseInt(response[16]) + parseInt(response[17])) <= 4 ? 0 : 1
     let textskill11 = (skill11) == 0 ? 'ทักษะด้านพฤติกรรมและอารมณ์ ' : ''
     let textskill12 = (skill12) == 0 ? 'ทักษะด้านการสื่อความหมาย ' : ''
     let textskill13 = (skill13) == 0 ? 'ทักษะด้านสังคม ' : ''
