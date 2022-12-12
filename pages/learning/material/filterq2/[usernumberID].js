@@ -199,20 +199,17 @@ export default (props) => {
                                         _hover={{ bg: 'White', border: '2px solid', color: Colour.FirstPink }}>
                                         Filter Missing Skills
                                     </Button> :
-                                    <Button bg="#FE979C" color="#FFFFFF" border='2px solid' borderColor='#FF969B' mr={3} mt={4} onClick={() => onFilterClick() & toast({
-                                        position: 'bottom-right',
-                                        render: () => (
-                                            <Alert status='success' color="#FFFFFF" bg="#FF969B">
-                                                <AlertIcon color="#FFFFFF" />
-                                                Missing Skills !
-                                            </Alert>
-                                        ),
-                                    })}
-                                        _hover={{
-                                            bg: 'White',
-                                            border: '2px solid',
-                                            color: Colour.FirstPink
-                                        }}>
+                                    <Button bg="#FE979C" color="#FFFFFF" border='2px solid' borderColor='#FF969B' mr={3} mt={4}
+                                        onClick={() => onFilterClick() & toast({
+                                            position: 'bottom-right',
+                                            render: () => (
+                                                <Alert status='success' color="#FFFFFF" bg="#FF969B">
+                                                    <AlertIcon color="#FFFFFF" />
+                                                    Missing Skills !
+                                                </Alert>
+                                            ),
+                                        })}
+                                        _hover={{ bg: 'White', border: '2px solid', color: Colour.FirstPink }}>
                                         Filter Missing Skills
                                     </Button>}
                                 {(check) || (alltext3) == 1 ?
@@ -220,16 +217,16 @@ export default (props) => {
                                         _hover={{ bg: 'White', border: '2px solid', color: Colour.FirstPink }}>
                                         Delete Filter
                                     </Button> :
-                                    <Button bg="#FE979C" color="#FFFFFF" border='2px solid' borderColor='#FF969B' mr={3} mt={4} onClick={() => setFilter('') & toast({
-                                        position: 'bottom-right',
-                                        isClosable: true,
-                                        render: () => (
-                                            <Alert status='success' color="#FFFFFF" bg="#FF969B">
-                                                <AlertIcon color="#FFFFFF" />
-                                                Delete Missing Skills !
-                                            </Alert>
-                                        ),
-                                    })}
+                                    <Button bg="#FE979C" color="#FFFFFF" border='2px solid' borderColor='#FF969B' mr={3} mt={4}
+                                        onClick={() => setFilter('') & toast({
+                                            position: 'bottom-right', isClosable: true,
+                                            render: () => (
+                                                <Alert status='success' color="#FFFFFF" bg="#FF969B">
+                                                    <AlertIcon color="#FFFFFF" />
+                                                    Delete Missing Skills !
+                                                </Alert>
+                                            ),
+                                        })}
                                         _hover={{ bg: 'White', border: '2px solid', color: Colour.FirstPink }}>
                                         Delete Filter
                                     </Button>}
