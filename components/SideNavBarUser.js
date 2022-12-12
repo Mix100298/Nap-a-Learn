@@ -2,11 +2,9 @@ import classNames from "classnames";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { React, useEffect, useState } from 'react';
-
-import { AiOutlineHome, AiOutlineSetting } from "react-icons/ai";
+import { AiOutlineHome } from "react-icons/ai";
 import { BiArrowFromRight } from "react-icons/bi";
 import { BsFileMusic, BsPeople } from "react-icons/bs";
-import { FiUsers } from "react-icons/fi";
 import { GoBook } from "react-icons/go";
 import { HiOutlineMenu } from "react-icons/hi";
 import { RiQuestionnaireLine } from "react-icons/ri";
@@ -19,8 +17,8 @@ const SideNavBar = () => {
   useEffect(() => {
     setuserID(sessionStorage.getItem('usernumberID'))
   }, [])
-
-const menuItems = [
+  // menuItems for SideNavBar of user
+  const menuItems = [
     { id: 1, label: "Dashboard", icon: AiOutlineHome, link: `/dashboard/${userID}` },
     { id: 2, label: "Questionnaire", icon: RiQuestionnaireLine, link: "/question" },
     { id: 3, label: "Learning Materials", icon: GoBook, link: "/learning" },
@@ -29,7 +27,6 @@ const menuItems = [
   ];
 
   const router = useRouter();
-
   const wrapperClasses = classNames(
     "h-auto min-h-screen px-4 pt-8 pb-4 bg-light flex justify-between flex-col",
     {
@@ -37,14 +34,12 @@ const menuItems = [
       ["w-20"]: toggleCollapse,
     }
   );
-
   const collapseIconClasses = classNames(
     "p-4 rounded bg-light-lighter absolute right-0",
     {
       "rotate-180": toggleCollapse,
     }
   );
-
   const getNavItemClasses = (menu) => {
 
     return classNames(
@@ -58,11 +53,9 @@ const menuItems = [
   const onMouseOver = () => {
     setIsCollapsible(!isCollapsible);
   };
-
   const handleSidebarToggle = () => {
     setToggleCollapse(!toggleCollapse);
   };
-
   return (
     <div
       className={wrapperClasses}
@@ -92,7 +85,7 @@ const menuItems = [
           )}
         </div>
 
-        <div className="flex flex-col items-start mt-8">   
+        <div className="flex flex-col items-start mt-8">
           {menuItems.map(({ icon: Icon, ...menu }) => {
             const classes = getNavItemClasses(menu);
             return (

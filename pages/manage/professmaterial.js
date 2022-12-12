@@ -59,7 +59,7 @@ export default () => {
     } = useDisclosure()
     const toast = useToast()
 
-     // check user role
+    // check user role
     useEffect(() => {
         const kickOut = () => {
             sessionStorage.clear()

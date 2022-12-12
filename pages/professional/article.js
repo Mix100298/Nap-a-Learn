@@ -18,7 +18,7 @@ export default () => {
     const [page, setPage] = useState(1)
     const [pageAmount, setPageAmount] = useState(1)
     const [search, setSearch] = useState('')
-    
+
     // fetch data article and search
     const fetchData = async () => {
         let result = await axios.get(`${url}/api/ProfesstionArticle/getProfesstionArticle`, {

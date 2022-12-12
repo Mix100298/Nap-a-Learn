@@ -73,7 +73,7 @@ export default function Home(props) {
     { title: "คะแนนเสีย", value: 20 - sumscorei, color: "#FF7121" },
   ];
   let data1 = [
-    { title: "คะแนนsดี", value: sumscorea, color: "#97CF47" },
+    { title: "คะแนนดี", value: sumscorea, color: "#97CF47" },
     { title: "คะแนนเสีย", value: 18 - sumscorea, color: "#FF7121" },
   ];
 

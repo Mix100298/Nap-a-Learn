@@ -16,7 +16,6 @@ export default function ProfesstionModal({ isOpen, onClose, mode }) {
   const [wrong, setWrong] = useState(false)
   const [wrongWord, setWrongWord] = useState('')
   const toast = useToast()
-
   const onSummitClick = () => {
     console.log('summit clicked!')
     if (form.topic && form.url && form.content) {
@@ -71,9 +70,9 @@ export default function ProfesstionModal({ isOpen, onClose, mode }) {
       >
         <ModalOverlay />
         <ModalContent>
-        {(mode) == 1 ? 
-          <ModalHeader>Add Professional Article </ModalHeader> :
-          <ModalHeader>Add Professional Material </ModalHeader>}
+          {(mode) == 1 ?
+            <ModalHeader>Add Professional Article </ModalHeader> :
+            <ModalHeader>Add Professional Material </ModalHeader>}
           <ModalCloseButton />
           <ModalBody>
             <Stack spacing={4}>

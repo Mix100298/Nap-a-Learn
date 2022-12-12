@@ -139,7 +139,7 @@ export default () => {
         )
     }
 
-     // fetch data all material
+    // fetch data all material
     const fetchData = async () => {
         let result = await axios.get(`${url}/api/Manage/getManage/getProArti`, {
             headers: {

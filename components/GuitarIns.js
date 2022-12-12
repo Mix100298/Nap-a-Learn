@@ -10,6 +10,7 @@ import Pomodoro from "./Pomodoro";
 
 // guitar instrument function
 function GuitarIns() {
+    {/* chord object */ }
     const strings = {
         Cm: [3, 1, 0, 1, 3, -1],
         CM: [0, 1, 0, 2, 3, -1],
@@ -18,16 +19,17 @@ function GuitarIns() {
         Gmaj9: [2, 0, 0, 0, 0, 3],
         Amaj9: [4, 2, 4, 2, 0, -1]
     };
-    const [stringsName, setStrings] = useState("Cm");
+    const [stringsName, setStrings] = useState("Cm"); {/* set default chord */ }
     const { play } = useSound({ fretting: strings[stringsName], tuning: standard });
     const theme = { spanishTheme, coco, dark }
-    const [themeName, setThemeName] = useState('spanishTheme');
+    const [themeName, setThemeName] = useState('spanishTheme'); {/* set default theme */ }
 
     return (
         <div>
             <Center>
                 <Flex gap={32}>
                     <Flex direction='column' marginTop={70}>
+                        {/* select chord */}
                         <Select value={stringsName} onChange={e => setStrings(e.target.value)} bgColor={Colour.White} borderColor={Colour.NextPink} border='2px' width={72} marginTop={6} marginLeft={10}>
                             <option value="Cm">Cm</option> {/*C minor */}
                             <option value="CM">CM</option> {/*C major*/}
@@ -36,6 +38,7 @@ function GuitarIns() {
                             <option value="Gmaj9">Gmaj9</option>
                             <option value="Amaj9">Amaj9</option>
                         </Select>
+                        {/* select theme */}
                         <Select value={themeName} onChange={e => setThemeName(e.target.value)}
                             bgColor={Colour.White} borderColor={Colour.NextPink} border='2px' width={72} marginTop={6} marginLeft={10}>
                             <option value="spanishTheme">Spanish Theme</option>
@@ -43,11 +46,12 @@ function GuitarIns() {
                             <option value="dark">Dark Theme</option>
                         </Select>
                     </Flex>
-                    <Pomodoro />
+                    <Pomodoro /> {/* show pomodoro clock*/}
                 </Flex>
             </Center>
             <Center>
                 <Box marginTop={8} maxWidth={1100}>
+                    {/* show guitar instrument */}
                     <Guitar
                         strings={strings[stringsName]}
                         renderFinger={getRenderFingerSpn(standard)}
@@ -60,4 +64,5 @@ function GuitarIns() {
         </div>
     )
 }
+
 export default GuitarIns;

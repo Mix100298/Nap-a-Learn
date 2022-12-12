@@ -24,7 +24,7 @@ function BoxAllSkillA({ skill1, skill2, skill3, data }) {
         <div>
             <Heading align='center' size='lg'>รายละเอียดผลการคัดกรอง</Heading>
             <Center>
-                <Box sx={boxBar} boxShadow='md' p='6' rounded='md'>
+                <Box sx={boxBar} boxShadow='md' p='6' rounded='md'> {/* pie chart for show result from questionnire */}
                     <PieChart
                         animate
                         animationDuration={40}

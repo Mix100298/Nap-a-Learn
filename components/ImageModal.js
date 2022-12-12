@@ -1,11 +1,10 @@
 import { Alert, AlertIcon, Box, Button, ButtonGroup, Container, Image, Input, InputGroup, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Stack, useToast } from '@chakra-ui/react'
 import axios from 'axios'
-import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import Colour from "../color/napalearncolor"
 import url from '../pages/url'
 
-// change your profile image modal
+// change profile image modal
 export default function ImageModal({ isOpen, onClose, usernumberID }) {
 
   let pinkbutton = {
@@ -35,7 +34,7 @@ export default function ImageModal({ isOpen, onClose, usernumberID }) {
   const onPreviewClick = () => {
     setPreview(true)
   }
-
+  {/* confirm button */ }
   const onSummitClick = async () => {
     console.log('summit clicked!')
     if (form.url) {

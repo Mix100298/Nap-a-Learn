@@ -16,7 +16,7 @@ export default function LearningModal({ isOpen, onClose, mode }) {
   const [wrong, setWrong] = useState(false)
   const [wrongWord, setWrongWord] = useState('')
   const toast = useToast()
-
+  {/* confirm add */ }
   const onSummitClick = () => {
     console.log('summit clicked!')
     if (form.topic && form.forskill && form.url && form.content) {
@@ -83,7 +83,7 @@ export default function LearningModal({ isOpen, onClose, mode }) {
                   focusBorderColor={Colour.FirstPink} color="black" colorScheme="black"
                   value={form.topic} onChange={(e) => setForm({ ...form, topic: e.target.value })} />
               </InputGroup>
-              <Flex gap={4}>
+              <Flex gap={4}> {/* select forskill */}
                 <Select placeholder='ForSkill' _placeholder={{ opacity: 1, color: 'black' }}
                   focusBorderColor={Colour.FirstPink} color="black" colorScheme="black"
                   value={form.forskill} onChange={(e) => setForm({ ...form, forskill: e.target.value })}>

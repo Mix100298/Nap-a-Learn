@@ -12,19 +12,19 @@ let boxResult = {
     marginRight: '20px',
     marginTop: '32px',
     marginBottom: '32px',
-    boxShadow:'md', 
-    p:'6', 
-    rounded:'md'
-  }
-  let boxButton = {
+    boxShadow: 'md',
+    p: '6',
+    rounded: 'md'
+}
+let boxButton = {
     bgColor: Colour.White,
     width: '40%',
     padding: '12px',
     marginTop: '24px',
     marginBottom: '24px',
-  }
-  
-// the box shows the case that the questionnaire is not performed
+}
+
+// the box that shows case of the questionnaire is not performed
 function BoxNoData() {
     return (
         <Flex align="center" justify="center">

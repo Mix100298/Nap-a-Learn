@@ -27,15 +27,15 @@ export default function PianoTherapy() {
         <div className="p-4 mt-1">
           <Heading size='2xl'>Piano Therapy</Heading>
           <Box sx={line} alignItems='center'></Box>
-          <Center> {/* show piano instrument*/}
+          <Center>
             <Flex gap={32}>
               <NoteTab />
               <Box marginTop={50}>
-                <Pomodoro />
+                <Pomodoro /> {/* show pomodoro clock*/}
               </Box>
             </Flex>
           </Center>
-          <PianoIns />
+          <PianoIns /> {/* show piano instrument and tab list of note*/}
         </div>
       </Layout>
     </div>

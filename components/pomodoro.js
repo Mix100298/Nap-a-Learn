@@ -1,8 +1,8 @@
+import { Box, Center, Flex, Heading, Text } from "@chakra-ui/react";
 import React from "react";
-import { Spacer, Center, Heading, Image, Box, Flex, Wrap, WrapItem, Grid, GridItem, Link, Button, border, Divider, Text } from "@chakra-ui/react";
 import Colour from "../color/napalearncolor";
 
-// pomodoro for music page
+// pomodoro clock function for music page
 class Pomodoro extends React.Component {
   constructor() {
     super();
@@ -15,14 +15,14 @@ class Pomodoro extends React.Component {
     };
     this.timer;
   }
-
+  // session time 
   updateSession(val) {
     if (this.timer) {
       this.timer.clearTimer();
     }
     this.setState({ sessionLen: val, sesTimeLeft: { nice: val, raw: parseInt(val) * 60 } });
   }
-
+  // break time
   updateBreak(val) {
     if (this.timer) {
       this.timer.clearTimer();
@@ -34,7 +34,7 @@ class Pomodoro extends React.Component {
   }
 
   handleClick() {
-    let { timerPaused, sessionLen, sesTimeLeft } = this.state;
+    let { timerPaused, sesTimeLeft } = this.state;
 
     if (timerPaused) {
       this.timer = new Timer(sesTimeLeft.raw);
@@ -67,7 +67,6 @@ class Pomodoro extends React.Component {
   }
 
   render() {
-    //console.log(this.state)
     let { timerPaused, sessionLen, sesTimeLeft, breakStarted, breakLen } = this.state;
     let display = sesTimeLeft.nice;
 
@@ -111,7 +110,7 @@ class Pomodoro extends React.Component {
       fontSize: "36px",
       fontWeight: "extrabold",
     }
-
+    {/*Show pomodoro clock */ }
     return (
       <div>
         <Heading size='lg' color={Colour.Darkblue} marginTop={5} align='center'>Set timer</Heading>
@@ -192,4 +191,5 @@ class Timer {
     clearInterval(this.timerID);
   }
 }
+
 export default Pomodoro;

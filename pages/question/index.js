@@ -7,17 +7,17 @@ import Layout from "../../components/Layout";
 
 export default () => {
 
-    const [userID,setuserID] = useState('')
-    useEffect(()=>{
-          setuserID(sessionStorage.getItem('usernumberID'))
-    },[])
+  const [userID, setuserID] = useState('')
+  useEffect(() => {
+    setuserID(sessionStorage.getItem('usernumberID'))
+  }, [])
 
-    let line = {
-        width: '100%',
-        marginTop: '12px',
-        height: '2px',
-        bgColor: Colour.Darkblue
-    }
+  let line = {
+    width: '100%',
+    marginTop: '12px',
+    height: '2px',
+    bgColor: Colour.Darkblue
+  }
 
   return (
     <div className="">
@@ -30,16 +30,16 @@ export default () => {
         <div className="p-4 mt-1">
           <Heading size='2xl'>Questionnaire</Heading>
           <Box sx={line}></Box>
-            <Wrap align='center' justify='center' spacingX='50px' spacingY='12px'>
-                <WrapItem> {/* select questionnaire */}
-                    <BoxSelect Header='Questionnaire' Link1='/question/question1' Topic1='แบบคัดกรองบุคคลที่มีความบกพร่องทางสติปัญญา' 
-                    Link2='/question/question2' Topic2='แบบคัดกรองบุคคลออทิสติก' Icon='1'/>
-                </WrapItem>
-                <WrapItem> {/* select result */}
-                     <BoxSelect Header='Result' Link1={`/question/result1/${userID}`} Topic1='ผลการคัดกรองบุคคลที่มีความบกพร่องทางสติปัญญา' 
-                     Link2={`/question/result2/${userID}`} Topic2='ผลการคัดกรองบุคคลออทิสติก' Icon='2'/>
-                </WrapItem>
-            </Wrap>
+          <Wrap align='center' justify='center' spacingX='50px' spacingY='12px'>
+            <WrapItem> {/* select questionnaire */}
+              <BoxSelect Header='Questionnaire' Link1='/question/question1' Topic1='แบบคัดกรองบุคคลที่มีความบกพร่องทางสติปัญญา'
+                Link2='/question/question2' Topic2='แบบคัดกรองบุคคลออทิสติก' Icon='1' />
+            </WrapItem>
+            <WrapItem> {/* select result */}
+              <BoxSelect Header='Result' Link1={`/question/result1/${userID}`} Topic1='ผลการคัดกรองบุคคลที่มีความบกพร่องทางสติปัญญา'
+                Link2={`/question/result2/${userID}`} Topic2='ผลการคัดกรองบุคคลออทิสติก' Icon='2' />
+            </WrapItem>
+          </Wrap>
         </div>
       </Layout>
     </div>

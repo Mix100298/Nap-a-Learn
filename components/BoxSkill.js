@@ -9,9 +9,9 @@ let boxSkill = {
     padding: '16px',
     justifyContent: 'center',
     alignItems: 'center',
-    boxShadow:'lg',
+    boxShadow: 'lg',
     rounded: 'md'
-  }
+}
 let boxHeadSkill = {
     bgColor: Colour.White,
     width: '200px',
@@ -19,9 +19,9 @@ let boxHeadSkill = {
     marginBottom: '12px',
     justifyContent: 'center',
     alignItems: 'center',
-  }
-  
-// pass or fail status skill box
+}
+
+// pass/fail status of skill box
 function BoxSkill({ text, score, image }) {
     return (
         <Box sx={boxSkill}>

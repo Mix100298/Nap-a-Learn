@@ -51,6 +51,7 @@ function BoxResultDashboard({ mode, check, datetime, data }) {
             </Box>
           </Flex> :
           <Box sx={boxBar} boxShadow='md' p='6' rounded='md'>
+            {/* pie chart to show result from questionnaire */}
             <PieChart
               animate
               animationDuration={40}

@@ -18,7 +18,7 @@ let boxFooter = {
     height: '16px',
 }
 
-// skill boxes for each skill of the Cognitive Disability questions.
+// skill boxes for each skill of the cognitive disability questions.
 function BoxAllSkillI({ skill1, skill2, skill3, skill4, skill5, skill6, skill7, skill8, skill9, skill10, data }) {
     return (
         <div>
@@ -49,7 +49,7 @@ function BoxAllSkillI({ skill1, skill2, skill3, skill4, skill5, skill6, skill7, 
                     <Text marginTop="18px" align='center' fontSize='lg'>สรุปผลการประเมินทักษะ </Text >
                 </Box>
             </Center>
-            <Wrap spacing='30px' justify='center'>
+            <Wrap spacing='30px' justify='center'> {/* All skill status */}
                 <WrapItem>
                     <BoxSkill text="ทักษะการสื่อสาร" score={skill1} image='/image/communication.png' />
                 </WrapItem>

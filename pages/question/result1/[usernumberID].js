@@ -76,7 +76,7 @@ export default () => {
     if (userID) { fetchData() }
   }, [])
 
-// fetch data result each question to evaluate the skill list
+  // fetch data result each question to evaluate the skill list
   let response = Object.values(result).map(value => value)
   let point = 0
   let apoint = 0
@@ -100,15 +100,15 @@ export default () => {
     cpoint = cpoint + parseInt(response[i])
   }
 
-  for (let i = 0; i <= 18; i+=2) {
+  for (let i = 0; i <= 18; i += 2) {
     skill[i] = (parseInt(response[i]) + parseInt(response[i])) == 0 ? 0 : 1
     pointskills = pointskills + skill[i]
   }
-  for (let i = 20; i <= 38; i+=2) {
+  for (let i = 20; i <= 38; i += 2) {
     skill[i] = (parseInt(response[i]) + parseInt(response[i])) == 0 ? 0 : 1
     apointskills = apointskills + skill[i]
   }
-  for (let i = 40; i <= 58; i+=2) {
+  for (let i = 40; i <= 58; i += 2) {
     skill[i] = (parseInt(response[i]) + parseInt(response[i])) == 0 ? 0 : 1
     bpointskills = bpointskills + skill[i]
   }
@@ -146,11 +146,11 @@ export default () => {
         <link rel="icon" href="/pro.ico" />
       </Head>
       <Layout>
-      <Loading isLoading={loading} />
+        <Loading isLoading={loading} />
         <div className="p-4 mt-1">
           <Heading size='xl'>ผลการคัดกรองบุคคลที่มีความบกพร่องทางสติปัญญา</Heading>
           <Box sx={line}></Box> {/* check result if the test is not performed */}
-          {(check) == 1 ? 
+          {(check) == 1 ?
             <Flex align="center" justify="center">
               <Box sx={boxResult} boxShadow='md' p='6' rounded='md' align="center" justify="center">
                 <Box sx={boxButton}>
@@ -168,7 +168,7 @@ export default () => {
             </Flex> :
             <Tabs variant='soft-rounded' colorScheme="pink">
               <Box sx={boxSelect}>
-                <TabList> 
+                <TabList>
                   <Tab _hover={{ bg: 'White', border: '2px solid', color: Colour.FirstPink }}>ผลการทดสอบปัจจุบัน</Tab>
                   <Tab _hover={{ bg: 'White', border: '2px solid', color: Colour.FirstPink }}>ผลการทดสอบย้อนหลัง 2 ครั้งล่าสุด</Tab>
                 </TabList>

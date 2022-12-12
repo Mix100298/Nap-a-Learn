@@ -1,6 +1,6 @@
 import React from "react";
-import { Box, HStack, Wrap, WrapItem} from '@chakra-ui/react'
-import { Stat, StatLabel, StatNumber, StatHelpText, StatGroup} from '@chakra-ui/react'
+import { Box, HStack, Wrap, WrapItem } from '@chakra-ui/react'
+import { Stat, StatLabel, StatNumber, StatHelpText, StatGroup } from '@chakra-ui/react'
 import Colour from "../color/napalearncolor"
 import { GrScorecard, GrStatusCriticalSmall } from "react-icons/gr";
 import { MdAutoGraph } from "react-icons/md";
@@ -15,28 +15,28 @@ let boxResult = {
     marginRight: '20px',
     marginTop: '32px',
     marginBottom: '32px',
-  }
+}
 let boxIcon = {
     bgColor: Colour.White,
     width: '70px',
     padding: '12px',
     justifyContent: 'center',
     alignItems: 'center',
-  }
+}
 let boxText = {
     bgColor: Colour.White,
     width: '250px',
     padding: '12px',
     justifyContent: 'center',
     alignItems: 'center',
-  }
-  
+}
+
 // cognitive disability questionnaire score summary box
 function BoxSummary({ point, pointbefore, passvalue }) {
     return (
         <Box sx={boxResult} boxShadow='md' p='6' rounded='md'>
             <StatGroup>
-                <Wrap spacing='30px' justify='center'>
+                <Wrap spacing='30px' justify='center'> {/* show the score summary */}
                     <WrapItem><Stat><HStack>
                         <Box sx={boxIcon}><GrScorecard size={50} /></Box>
                         <Box sx={boxText}>
@@ -55,7 +55,7 @@ function BoxSummary({ point, pointbefore, passvalue }) {
                                 <MdAutoGraph size={50} color="#FF7121" />
                             }
                         </Box>
-                        <Box sx={boxText}>
+                        <Box sx={boxText}> {/* show the improving score */}
                             <StatLabel>คะแนนพัฒนาการ</StatLabel>
                             <StatNumber>{point - pointbefore} คะแนน</StatNumber>
                             {(point - pointbefore) > 0 ?
@@ -71,12 +71,12 @@ function BoxSummary({ point, pointbefore, passvalue }) {
                                 <GrStatusCriticalSmall size={50} color="#97CF47" /> :
                                 <GrStatusCriticalSmall size={50} color="#FF7121" />}
                         </Box>
-                        <Box sx={boxText}>
+                        <Box sx={boxText}> {/* show the pass or not */}
                             <StatLabel>สถานะ</StatLabel>
                             {(passvalue) == 1 ?
                                 <StatNumber>ผ่าน</StatNumber> :
                                 <StatNumber>ไม่ผ่าน</StatNumber>}
-                            {(passvalue) == 1 ?
+                            {(passvalue) == 1 ? // show the pass or not
                                 <StatLabel>ไม่พบความบกพร่องทางออทิสติก</StatLabel> :
                                 <StatLabel>มีโอกาสพบความบกพร่องทางออทิสติก</StatLabel>}
                         </Box>

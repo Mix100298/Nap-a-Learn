@@ -22,7 +22,7 @@ export default () => {
                   <Layout>
                         <div className="p-4 mt-1">
                               <Heading color='#3E3C6E' size='2xl'>Learning Materials</Heading>
-                              <Box sx={line}></Box> {/* select article or material */}
+                              <Box sx={line}></Box> {/* show article menu and material menu */}
                               <Wrap align='center' justify='center' spacingX='50px' spacingY='12px'>
                                     <BoxLearningProfessional link={`/learning/article`} image='/image/articlelearning.jpg' headding='Article' text='Read more to improve youself' />
                                     <BoxLearningProfessional link={`/learning/material`} image='/image/material.png' headding='Material' text='online playground for you' />

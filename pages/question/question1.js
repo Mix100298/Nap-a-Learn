@@ -255,7 +255,7 @@ export default () => {
     );
     const answer = Object.values(ordered)
 
-    {/* add answer question 1*/}
+    {/* add answer question 1*/ }
     axios.post(`${url}/api/Question/addQuestion1`, {
       answer: answer,
       userID: sessionStorage.getItem('usernumberID')

@@ -38,7 +38,7 @@ function CustomCheckbox(props) {
             py={1}
             cursor='pointer'
             {...htmlProps}
-        >   
+        >
             <input onClick={() => toast({
                 position: 'bottom-right',
                 render: () => (
@@ -161,7 +161,7 @@ export default (props) => {
         }
     }
 
-     // fetch data when filter, search, page change
+    // fetch data when filter, search, page change
     useEffect(() => {
         fetchData()
     }, [filter, search, page])
@@ -263,7 +263,7 @@ export default (props) => {
                                 </TabPanels>
                             </Tabs>
                         </Box> {/* show Material */}
-                        {   
+                        {
                             material.map((item, index) => {
                                 return (
                                     <Center>

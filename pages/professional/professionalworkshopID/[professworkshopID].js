@@ -16,7 +16,7 @@ export default () => {
         marginTop: '12px',
         height: '2px',
     }
-    let boxVideo = { 
+    let boxVideo = {
         width: '100%',
         maxWidth: '1300px',
     }
@@ -61,12 +61,12 @@ export default () => {
                     <Heading size='2xl' color="#3E3C6E">Workshop</Heading>
                     <Box sx={line}></Box>
                     <Flex align="center" justify="center"> {/* show each material */}
-                        <Wrap align='center' justify='center' spacingX='50px' spacingY='12px'>                           
-                                <Box sx={boxVideo}>
-                                    <AspectRatio   maxW='1300px' maxH='800px' marginTop= '36px' ratio={16/9} >
-                                        <iframe src={result.url} allowFullScreen > </iframe>                                
-                                    </AspectRatio>                                 
-                                </Box>                          
+                        <Wrap align='center' justify='center' spacingX='50px' spacingY='12px'>
+                            <Box sx={boxVideo}>
+                                <AspectRatio maxW='1300px' maxH='800px' marginTop='36px' ratio={16 / 9} >
+                                    <iframe src={result.url} allowFullScreen > </iframe>
+                                </AspectRatio>
+                            </Box>
                             <Box sx={boxHeading}>
                                 <Heading size='2xl' color="#3E3C6E" marginTop='10px'>{result.topic}</Heading>
                             </Box>

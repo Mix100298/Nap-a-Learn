@@ -6,14 +6,14 @@ import React, { useState, useEffect } from 'react';
 
 // piano function
 function PianoIns() {
-
-    const firstNote = MidiNumbers.fromNote('c3')
-    const lastNote = MidiNumbers.fromNote('f5')
+    {/* piano setting */ }
+    const firstNote = MidiNumbers.fromNote('c3');
+    const lastNote = MidiNumbers.fromNote('f5');
     const keyboardShortcuts = KeyboardShortcuts.create({
         firstNote: firstNote,
         lastNote: lastNote,
         keyboardConfig: KeyboardShortcuts.HOME_ROW,
-    })
+    });
     const [instrument, setInstrument] = useState('c3')
     useEffect(() => {
         Soundfont.instrument(new AudioContext(), 'acoustic_grand_piano').then((instrument) => {
@@ -24,6 +24,7 @@ function PianoIns() {
     return (
         <Center>
             <Box marginTop={6}>
+                {/* show piano instrument */}
                 <Piano
                     noteRange={{ first: firstNote, last: lastNote }}
                     playNote={(midiNumber) => {

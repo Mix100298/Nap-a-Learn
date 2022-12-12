@@ -14,22 +14,22 @@ let boxResult = {
     marginRight: '20px',
     marginTop: '32px',
     marginBottom: '32px',
-  }
+}
 let boxIcon = {
     bgColor: Colour.White,
     width: '70px',
     padding: '12px',
     justifyContent: 'center',
     alignItems: 'center',
-  }
+}
 let boxText = {
     bgColor: Colour.White,
     width: '250px',
     padding: '12px',
     justifyContent: 'center',
     alignItems: 'center',
-  }
-  
+}
+
 // autism disability questionnaire score summary box
 function BoxSummary({ point, pointbefore, passvalue }) {
     return (
@@ -38,7 +38,7 @@ function BoxSummary({ point, pointbefore, passvalue }) {
                 <Wrap spacing='30px' justify='center'>
                     <WrapItem><Stat><HStack>
                         <Box sx={boxIcon}><GrScorecard size={50} /></Box>
-                        <Box sx={boxText}>
+                        <Box sx={boxText}> {/* show the score summary */}
                             <StatLabel>คะแนนรวมที่ได้</StatLabel>
                             <StatNumber>{point} คะแนน</StatNumber>
                             <StatHelpText>
@@ -55,7 +55,7 @@ function BoxSummary({ point, pointbefore, passvalue }) {
                             }
                         </Box>
                         <Box sx={boxText}>
-                            <StatLabel>คะแนนพัฒนาการ</StatLabel>
+                            <StatLabel>คะแนนพัฒนาการ</StatLabel> {/* show the improving score */}
                             <StatNumber>{point - pointbefore} คะแนน</StatNumber>
                             {(point - pointbefore) > 0 ?
                                 <StatHelpText> มีพัฒนาการที่ดีขึ้น </StatHelpText> :
@@ -71,11 +71,11 @@ function BoxSummary({ point, pointbefore, passvalue }) {
                                 <GrStatusCriticalSmall size={50} color="#FF7121" />}
                         </Box>
                         <Box sx={boxText}>
-                            <StatLabel>สถานะ</StatLabel>
+                            <StatLabel>สถานะ</StatLabel> {/* show the pass or not */}
                             {(passvalue) == 1 ?
                                 <StatNumber>ผ่าน</StatNumber> :
                                 <StatNumber>ไม่ผ่าน</StatNumber>}
-                            {(passvalue) == 1 ?
+                            {(passvalue) == 1 ? // show the pass or not
                                 <StatLabel>ไม่พบความบกพร่องทางสติปัญญา</StatLabel> :
                                 <StatLabel>มีโอกาสพบความบกพร่องทางสติปัญญา</StatLabel>}
                         </Box>

@@ -19,6 +19,7 @@ function NoteTab() {
                 <Tab>Loy kratong</Tab>
                 <Tab>Mary have a little lamp</Tab>
             </TabList>
+            {/*Jingle bell note*/}
             <TabPanels>
                 <TabPanel>
                     <Center>
@@ -29,6 +30,7 @@ function NoteTab() {
                         />
                     </Center>
                 </TabPanel>
+                {/*Loy krathong note*/}
                 <TabPanel>
                     <Center>
                         <Image
@@ -38,6 +40,7 @@ function NoteTab() {
                         />
                     </Center>
                 </TabPanel>
+                {/*Mary have a little lamp note*/}
                 <TabPanel>
                     <Center>
                         <Image
@@ -48,7 +51,9 @@ function NoteTab() {
                     </Center>
                 </TabPanel>
             </TabPanels>
+
         </Tabs>
     )
 }
+
 export default NoteTab;

@@ -2,7 +2,6 @@ import classNames from "classnames";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { React, useEffect, useState } from 'react';
-
 import { AiOutlineHome, AiOutlineSetting } from "react-icons/ai";
 import { BiArrowFromRight } from "react-icons/bi";
 import { BsFileMusic, BsPeople } from "react-icons/bs";
@@ -19,8 +18,8 @@ const SideNavBar = () => {
   useEffect(() => {
     setuserID(sessionStorage.getItem('usernumberID'))
   }, [])
-
-const menuItems = [
+  {/*menuItems for link the page */ }
+  const menuItems = [
     { id: 1, label: "Dashboard", icon: AiOutlineHome, link: `/dashboard/${userID}` },
     { id: 2, label: "Questionnaire", icon: RiQuestionnaireLine, link: "/question" },
     { id: 3, label: "Learning Materials", icon: GoBook, link: "/learning" },
@@ -75,7 +74,7 @@ const menuItems = [
       <div className="flex flex-col sticky top-8">
         <div className="flex items-center justify ml-1 relative">
           <div className="flex items-center pl-1 gap-4">
-            <HiOutlineMenu size={30} color="header" onClick={handleSidebarToggle} cursor='pointer'/>
+            <HiOutlineMenu size={30} color="header" onClick={handleSidebarToggle} cursor='pointer' />
             <span
               className={classNames("mt-1 text-lg font-medium text-text", {
                 hidden: toggleCollapse,
@@ -94,7 +93,7 @@ const menuItems = [
           )}
         </div>
 
-        <div className="flex flex-col items-start mt-8">   
+        <div className="flex flex-col items-start mt-8">
           {menuItems.map(({ icon: Icon, ...menu }) => {
             const classes = getNavItemClasses(menu);
             return (

@@ -1,5 +1,5 @@
 import React from "react";
-import {Box, Flex, InputGroup, InputRightElement, Input, Spacer} from '@chakra-ui/react'
+import { Box, Flex, InputGroup, InputRightElement, Input, Spacer } from '@chakra-ui/react'
 import Colour from "../color/napalearncolor"
 
 let searchbox = {

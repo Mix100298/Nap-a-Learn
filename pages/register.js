@@ -265,7 +265,7 @@ export default function Home() {
               </Button>
             </Box> {/* set wrong word */}
             {
-              (wrong) ? 
+              (wrong) ?
                 <Alert status='error'
                   bg='none'
                   color='red'

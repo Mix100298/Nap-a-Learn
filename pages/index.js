@@ -58,8 +58,9 @@ export default function Index() {
             </Heading></Box>
           </Box>
         </Flex>
-
-        <Wrap spacing="30px" justify="center"> {/* show detail website*/}
+        {/* show detail website*/}
+        <Wrap spacing="30px" justify="center">
+          {/* show questionaire feature*/}
           <Flex sx={Hcomponent.boxContent}>
             <Box align="center" justify="center">
               <Box>
@@ -74,7 +75,7 @@ export default function Index() {
               </Flex>
             </Box>
           </Flex>
-
+          {/* show learning materials feature*/}
           <Flex sx={Hcomponent.boxContent}>
             <Box align="center" justify="center">
               <Box>
@@ -88,7 +89,7 @@ export default function Index() {
               </Flex>
             </Box>
           </Flex>
-
+          {/* show professional skills feature*/}
           <Flex sx={Hcomponent.boxContent}>
             <Box align="center" justify="center">
               <Box>
@@ -102,12 +103,12 @@ export default function Index() {
               </Flex>
             </Box>
           </Flex>
-
+          {/* show music therapy feature*/}
           <Flex sx={Hcomponent.boxContent}>
             <Box align="center" justify="center">
               <Box>
                 <Image marginBottom='20px' src='/image/MusicTherapyMini.png' />
-                <Text sx={Hcomponent.informationHeadingText}>  Music Therapy</Text>
+                <Text sx={Hcomponent.informationHeadingText}> Music Therapy</Text>
               </Box>
               <Flex sx={Hcomponent.boxContent1}>
                 <Text sx={Hcomponent.informationText}>  “Music Therapy” เป็นฟีเจอร์ ที่ถูกจัดทำขึ้นเพื่อเสริมสร้างความรู้สึกของผู้ใช้งาน ให้เกิดอารมณ์สุนทรีย์ และผ่อนคลายมากขึ้น
@@ -125,47 +126,47 @@ export default function Index() {
             <Image src='/image/workshop.png' width={1200} />
           </Box>
         </Box>
-
+        {/* show team */}
         <Box sx={Hcomponent.container} align="center" justify="center">
           <Heading marginTop='48px' marginBottom='48px' color='black' > ทีมผู้จัดทำ </Heading>
         </Box>
 
         <Wrap spacing="30px" justify="center" marginBottom='60px'>
           <Box sx={Hcomponent.boxProfile} align="center" justify="center">
-            <Image Image sx ={Hcomponent.devImage}
+            <Image Image sx={Hcomponent.devImage}
               src='/image/witchayut.jpg'
             />
             <Heading sx={Hcomponent.devHeading}>
               วิชยุฒม์ ช่วยชูกูล
             </Heading>
-            <Text sx = {Hcomponent.devText}>63070501057</Text>
+            <Text sx={Hcomponent.devText}>63070501057</Text>
           </Box>
           <Box sx={Hcomponent.boxProfile} align="center" justify="center">
-            <Image Image sx ={Hcomponent.devImage}
+            <Image Image sx={Hcomponent.devImage}
               src='/image/sirawit2.jpg'
             />
             <Heading sx={Hcomponent.devHeading}>
               สิรวิชญ์ วัฒโน
             </Heading>
-            <Text sx = {Hcomponent.devText}>63070501071</Text>
+            <Text sx={Hcomponent.devText}>63070501071</Text>
           </Box>
           <Box sx={Hcomponent.boxProfile} align="center" justify="center">
-            <Image Image sx ={Hcomponent.devImage}
+            <Image Image sx={Hcomponent.devImage}
               src='/image/siriwat2.jpg'
             />
-            <Heading sx = {Hcomponent.devHeading}>
+            <Heading sx={Hcomponent.devHeading}>
               สิริวัฒน์ โชติเลอศักดิ์
             </Heading>
-            <Text sx = {Hcomponent.devText}>63070501073</Text>
+            <Text sx={Hcomponent.devText}>63070501073</Text>
           </Box>
           <Box sx={Hcomponent.boxProfile} align="center" justify="center">
-            <Image sx ={Hcomponent.devImage}
+            <Image sx={Hcomponent.devImage}
               src='/image/sudarat2.jpg'
             />
             <Heading sx={Hcomponent.devHeading}>
               สุดารัตน์ ร่มสุข
             </Heading>
-            <Text sx = {Hcomponent.devText}>63070501076</Text>
+            <Text sx={Hcomponent.devText}>63070501076</Text>
           </Box>
 
         </Wrap>

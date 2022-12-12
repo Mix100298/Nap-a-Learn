@@ -84,7 +84,7 @@ export default function Home() {
                 height={400}
               />
               <Box sx={boxLogin} align="center" justify="center" >
-                <Stack spacing={6}> {/* from input username and password */}
+                <Stack spacing={6}> {/* form input username and password */}
                   <InputGroup size='md'>
                     <InputLeftElement pointerEvents='none'>
                       <FaUser size={20} color="white" />

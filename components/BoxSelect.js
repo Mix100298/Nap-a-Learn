@@ -51,8 +51,8 @@ function BoxSelect({ Header, Link1, Topic1, Link2, Topic2, Icon }) {
                 }}>
                 <HStack spacing='24px'>
                     <Box sx={boxIcon}>
-                        {(Icon) == 1 ? <BsPlayCircle size={36} color="#ff8515" /> 
-                        : <BiSearchAlt size={36} color="#96cf47" />}
+                        {(Icon) == 1 ? <BsPlayCircle size={36} color="#ff8515" />
+                            : <BiSearchAlt size={36} color="#96cf47" />}
                     </Box>
                     <Flex sx={boxText} alignItems="center">
                         <NextLink href={Link1} passHref>
@@ -71,8 +71,8 @@ function BoxSelect({ Header, Link1, Topic1, Link2, Topic2, Icon }) {
                 }}>
                 <HStack spacing='24px'>
                     <Box sx={boxIcon}>
-                        {(Icon) == 1 ? <BsPlayCircle size={36} color="#ff8515" /> 
-                        : <BiSearchAlt size={36} color="#96cf47" />}
+                        {(Icon) == 1 ? <BsPlayCircle size={36} color="#ff8515" />
+                            : <BiSearchAlt size={36} color="#96cf47" />}
                     </Box>
                     <Flex sx={boxText} alignItems="center">
                         <NextLink href={Link2} passHref>

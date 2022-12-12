@@ -76,7 +76,7 @@ export default () => {
                 <div className="p-4 mt-1">
                     <Wrap align='center' justify='center' spacingX='50px' spacingY='12px'>
                         <Box sx={searchbox}> {/* searchbox */}
-                            <Search icon={<BiSearchAlt />} onChange={(e) => { setSearch(e.target.value); setPage(1) }} /> 
+                            <Search icon={<BiSearchAlt />} onChange={(e) => { setSearch(e.target.value); setPage(1) }} />
                         </Box>
                         <WrapItem>
                             <Box sx={menu} boxShadow='lg' p='6' rounded='md'>

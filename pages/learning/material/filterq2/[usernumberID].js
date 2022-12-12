@@ -153,8 +153,8 @@ export default (props) => {
 
     for (let i = 0; i <= 17; i++) {
         point = point + parseInt(response[i])
-      }
-    
+    }
+
     let check = (point) < 0 ? 1 : 0
     let skill11 = (response[0] + response[1] + response[2] + response[3] + response[4]) <= 3 ? 0 : 1
     let skill12 = (response[5] + response[6] + response[7] + response[8] + response[9] + response[10] + response[11]) <= 5 ? 0 : 1
