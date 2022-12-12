@@ -168,7 +168,7 @@ export default function Home(props) {
                   <Box marginTop='36px'>
                     <Wrap align='center' justify='center'>
                       <WrapItem>
-                        <Center> {/*show result of intellect questionnaire*/}
+                        <Center> {/*show result of intellect questionnaire*/} 
                           <BoxResultDashboard mode='1' check={icheck} datetime={idatetime} data={data}></BoxResultDashboard>
                         </Center>
                       </WrapItem>

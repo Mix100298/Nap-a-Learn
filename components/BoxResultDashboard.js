@@ -74,7 +74,7 @@ function BoxResultDashboard({ mode, check, datetime, data }) {
               labelPosition={50}
             />
             <Text marginTop="18px" align='center' fontSize='lg'>สรุปผลการประเมินทักษะในปัจจุบัน </Text>
-            <Text marginTop="6px" align='center' fontSize='lg'>วันที่ประเมิน {datetime}</Text>
+            <Text marginTop="6px" align='center' fontSize='lg'>วันที่ประเมิน {(new Date(datetime)).toLocaleString()}</Text>
           </Box>}
       </Box>
     </div>
